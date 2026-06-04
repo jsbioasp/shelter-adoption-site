@@ -1,0 +1,40 @@
+name: Refresh Taiwan adoptable-dogs snapshot
+
+# Keeps data/taiwan_dogs.csv current. Streamlit Community Cloud auto-redeploys
+# when this commit lands on main, so the site shows fresh dogs with no extra wiring.
+
+on:
+  schedule:
+    - cron: "0 18 * * *"   # daily at 18:00 UTC (~02:00 Taiwan)
+  workflow_dispatch: {}      # allow manual runs from the Actions tab
+
+permissions:
+  contents: write            # needed to commit the refreshed snapshot
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install fetch dependencies (no torch — fetch is pure pandas/requests)
+        run: pip install requests pandas
+
+      - name: Fetch + normalize the live feed
+        run: python scripts/fetch_taiwan_dogs.py
+
+      - name: Commit the snapshot if it changed
+        run: |
+          git config user.name  "taiwan-data-bot"
+          git config user.email "actions@github.com"
+          git add data/taiwan_dogs.csv data/taiwan_meta.json
+          if git diff --staged --quiet; then
+            echo "No change in snapshot."
+          else
+            git commit -m "data: refresh Taiwan adoptable-dogs snapshot"
+            git push
+          fi

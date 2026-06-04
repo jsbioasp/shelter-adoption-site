@@ -1,0 +1,11 @@
+# Shelter Adoption ML — site dependencies.
+# Pinned to the versions this site was built + tested against (Python 3.14, macOS arm64).
+# Streamlit Community Cloud: set the app's Python version to match under Advanced settings.
+streamlit==1.58.0
+torch==2.11.0
+torchvision==0.26.0
+scikit-learn==1.8.0
+pandas==2.3.3
+numpy==2.4.4
+Pillow==12.2.0
+requests==2.34.2
