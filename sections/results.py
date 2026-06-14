@@ -6,7 +6,7 @@ the actual ensembles; the research ladder is cited from the findings docs.
 import pandas as pd
 import streamlit as st
 
-from lib import data, models
+from lib import data, glossary, models
 
 
 @st.cache_resource
@@ -23,6 +23,7 @@ def render():
         "30 days is roughly the *typical* adoption time. Read every score as **adoption pace "
         "vs a typical dog**: 50% = average, higher = likely faster, lower = likely slower."
     )
+    glossary.render(st, "auc", "rank_agreement", "calibration", "mlp", "cnn", "multitask")
 
     st.markdown("## The models running on this site")
     aucs = _live_aucs()
@@ -43,9 +44,9 @@ def render():
         {"Configuration": "Photo + data, multi-task (deployed)", "AUC": f"{aucs['multitask']:.3f}",
          "Note": "The model this site serves"},
         {"Configuration": "Photo + data, best research config", "AUC": f"{f['m06_multitask_auc']['value']}",
-         "Note": f"{f['m06_multitask_auc']['source']}"},
+         "Note": "From our experiments"},
         {"Configuration": "Full feature set, ceiling", "AUC": f"{f['m06_ceiling_auc']['value']}",
-         "Note": f"{f['m06_ceiling_auc']['source']}"},
+         "Note": "From our experiments"},
     ])
     st.table(ladder)
     st.caption("The deployed model is a touch below the research ceiling — it trades a "

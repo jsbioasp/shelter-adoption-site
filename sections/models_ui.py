@@ -12,7 +12,7 @@ from io import BytesIO
 import streamlit as st
 from PIL import Image
 
-from lib import features, models
+from lib import features, glossary, models
 
 
 def _confidence(p: float) -> tuple[str, str]:
@@ -52,8 +52,8 @@ def _show_result(p: float, stratum: str | None = None, model: str = "data_image"
                    "(it's less calibrated than the photo+data model — see Results). "
                    "Read it as 'what the picture suggests', not a reliable adoption rate.")
     if stratum:
-        st.caption(f"Demographic stratum: **{stratum}** "
-                   "(y = young, m = mixed-breed; the rate-gap analysis is run within strata).")
+        st.caption(f"Demographic group: **{stratum}** — effects like the photo lever are "
+                   "measured within a group, so we compare like with like.")
     st.caption("Observational, not causal. Use to triage, not to decide.")
 
 
@@ -88,6 +88,7 @@ def render():
         "Run the adoption model on your own dog. Pick a mode — the more you give it, the "
         "more the prediction has to work with."
     )
+    glossary.render(st, "mlp", "cnn", "multitask", "strata")
 
     tab_data, tab_image, tab_both = st.tabs(
         ["📋 Data only", "📷 Image only", "📋📷 Data + image"]
@@ -106,7 +107,7 @@ def render():
         if go:
             s6 = features.derive_shared6(age, mixed, gender, sterilized)
             p = models.score_data_only(s6)
-            _show_result(p, features.stratum_key(s6), model="tabular_only")
+            _show_result(p, features.stratum_label(s6), model="tabular_only")
             _show_features(s6)
             st.caption("Heads-up: with only 6 demographic flags, this model produces just "
                        "~16 distinct scores. For a per-dog read, add a photo.")
@@ -145,5 +146,5 @@ def render():
                 s6 = features.derive_shared6(age2, mixed2, gender2, ster2)
                 with st.spinner("Encoding photo + scoring…"):
                     p = models.score_data_and_image(img2, s6)
-                _show_result(p, features.stratum_key(s6), model="data_image")
+                _show_result(p, features.stratum_label(s6), model="data_image")
                 _show_features(s6)

@@ -6,7 +6,7 @@ here comes from lib.data.FINDINGS so nothing is unsourced.
 import pandas as pd
 import streamlit as st
 
-from lib import data
+from lib import data, glossary
 
 
 @st.cache_data
@@ -73,13 +73,15 @@ def render():
     st.success(
         f"**Photos add real signal.** Adding CNN photo features lifts adoption AUC by "
         f"**{f['m06_multitask_lift']['value']}** over the tabular baseline. "
-        f"*{f['m06_multitask_lift']['source']}*"
+        "*From our experiments.*"
     )
     st.success(
         f"**One lever beats a fancy model.** Within young mixed-breed dogs, caged photos "
         f"are associated with **{f['caged_rate_gap']['value']}** in 30-day adoption. "
-        f"*{f['caged_rate_gap']['source']}*"
+        "*From our experiments.*"
     )
+
+    glossary.render(st, "auc", "rank_agreement")
 
     st.markdown("## Notable failures (the honest part)")
     st.warning(
