@@ -16,30 +16,37 @@ from lib import features, models
 
 
 def _confidence(p: float) -> tuple[str, str]:
-    """Map P(adopt) to a tier label + plain-English read."""
+    """Map an adoption-pace score to a tier label + plain-English read.
+
+    0.5 is the average pace: the 30-day training cutoff split PetFinder ~50/50,
+    so the tiers read as faster / around / slower than a typical dog.
+    """
     if p >= 0.60:
-        return "🟢 Strong", (f"About {p:.0%} of dogs like this are adopted within 30 days — "
-                              "above the typical shelter base rate.")
+        return "🟢 Faster than average", (f"Scores {p:.0%} — above the 50% average, so this dog "
+                                          "looks likely to be adopted faster than a typical dog.")
     if p >= 0.40:
-        return "🟡 Moderate", (f"Around {p:.0%} — roughly a coin-flip-to-even chance within "
-                               "30 days. Worth a presentation boost.")
-    return "🔴 At risk", (f"Only about {p:.0%} within 30 days. These dogs benefit most from "
-                          "a better photo, a featured listing, or an early foster.")
+        return "🟡 About average", (f"Scores {p:.0%} — near the 50% average pace. A better photo "
+                                    "or a featured listing can still nudge it up.")
+    return "🔴 Slower than average", (f"Scores {p:.0%} — below the 50% average, so this dog likely "
+                                      "adopts slower than typical. It benefits most from a better "
+                                      "photo, a featured listing, or an early foster.")
 
 
 def _show_result(p: float, stratum: str | None = None, model: str = "data_image",
                  calibrated: bool = True):
     tier, read = _confidence(p)
     c1, c2 = st.columns([1, 2])
-    c1.metric("P(adopt in 30 days)", f"{p:.0%}")
+    c1.metric("Adoption pace", f"{p:.0%}",
+              help="50% = average pace (our 30-day training cutoff split PetFinder ~50/50). "
+                   "Higher = likely faster than a typical dog; lower = slower.")
     c2.markdown(f"### {tier}\n{read}")
     if calibrated:
         c = models.confidence_from_prob(p, model=model)
         acc = f"~{c['accuracy_pct']:.0f}%" if c["accuracy_pct"] is not None else "—"
         st.caption(f"Confidence: among dogs the model is this sure about, it's right **{acc}** "
-                   "of the time. This is a *calibrated* probability — predicted ≈ actual "
-                   "(see Results). Likelihood ≠ confidence: a confident *low* score is still "
-                   "a low score.")
+                   "of the time. This is a *calibrated* score — predicted ≈ actual "
+                   "(see Results). Pace ≠ confidence: a confident *slow* score is still "
+                   "a slow score.")
     else:
         st.caption("⚠️ Photo-only is a **diagnostic**, not a calibrated probability "
                    "(it's less calibrated than the photo+data model — see Results). "

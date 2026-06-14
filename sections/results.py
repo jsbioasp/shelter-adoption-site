@@ -17,6 +17,13 @@ def _live_aucs():
 def render():
     st.title("Results")
 
+    st.info(
+        "**What every score on this site means.** We trained on whether a dog was adopted "
+        "within 30 days — which split our PetFinder data almost exactly in half (~50%), so "
+        "30 days is roughly the *typical* adoption time. Read every score as **adoption pace "
+        "vs a typical dog**: 50% = average, higher = likely faster, lower = likely slower."
+    )
+
     st.markdown("## The models running on this site")
     aucs = _live_aucs()
     c1, c2 = st.columns(2)
@@ -49,12 +56,18 @@ def render():
 
     st.markdown("## What the model is most confident about")
     st.markdown(
-        "- **Confident & right:** young, small, mixed-breed dogs with clean photos — "
-        "the model and the outcomes agree.\n"
+        "- **Confident & right:** young dogs in uncaged listing photos — the model and the "
+        "outcomes agree. (Young *purebred* puppies adopt fastest of all; the caged-photo "
+        "lever helps the much larger young, mixed-breed group most.)\n"
         "- **Confident & wrong:** cross-shelter transfer. The photo model is confident on "
         "Taiwan institutional photos and confidently wrong — see the Datasets page.\n"
         "- **Honest uncertainty:** for adult purebreds the signal is thin; the model "
         "says so with probabilities near the base rate."
+    )
+    st.caption(
+        "Photo findings are preliminary. An uncaged listing photo is the clearest lever; "
+        "other composition factors (framing, pose, focus) show smaller, less consistent "
+        "effects. We're re-running the image experiments with newer findings and may revise these."
     )
 
 

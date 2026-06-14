@@ -26,9 +26,10 @@ def render():
     with col2:
         st.markdown(
             "### Efficiency & effectiveness\n"
-            "The same prediction that ranks a dog also explains *why*. The biggest "
-            "lever we found isn't a fancy model — it's a clear, uncaged photo of a "
-            "young mixed-breed dog. Small changes, measurable lift."
+            "The same prediction that ranks a dog also explains *why*. The clearest "
+            "lever we found isn't a fancy model — it's an uncaged listing photo, which "
+            "helps the large group of young, mixed-breed dogs the most. (Young purebred "
+            "puppies already adopt fastest.) Small changes, measurable lift."
         )
     with col3:
         st.markdown(
@@ -41,7 +42,7 @@ def render():
     st.markdown("## What you can do here")
     st.markdown(
         "- **Try the models** — score your own dog's data, photo, or both, and see "
-        "the predicted 30-day adoption probability with an honest confidence read.\n"
+        "the predicted adoption pace with an honest confidence read.\n"
         "- **Discover dogs** — browse live, currently-adoptable dogs from Taiwan's "
         "public shelter feed, searchable by shelter.\n"
         "- **See the results** — the best models, what they get right, and where they "
@@ -52,7 +53,7 @@ def render():
 
     st.info(
         "**Honest framing:** these models are decision *support*, not decision makers. "
-        "The strongest signal is a simple one (photo quality within a demographic "
-        "group), the model's accuracy is modest (AUC ≈ 0.70), and every prediction is "
-        "observational, not causal. The Results page is candid about the limits."
+        "The clearest lever is a simple one (an uncaged listing photo, within a "
+        "demographic group), the model's accuracy is modest (AUC ≈ 0.70), and every "
+        "prediction is observational, not causal. The Results page is candid about the limits."
     )
