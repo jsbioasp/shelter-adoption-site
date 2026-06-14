@@ -41,7 +41,7 @@ def render():
     st.markdown("## What you can do here")
     st.markdown(
         "- **Try the models** — score your own dog's data, photo, or both, and see "
-        "the predicted 30-day adoption probability with an honest confidence read.\n"
+        "the predicted adoption pace with an honest confidence read.\n"
         "- **Discover dogs** — browse live, currently-adoptable dogs from Taiwan's "
         "public shelter feed, searchable by shelter.\n"
         "- **See the results** — the best models, what they get right, and where they "

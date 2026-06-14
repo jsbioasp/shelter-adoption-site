@@ -88,7 +88,7 @@ def _details_dialog(row, scores, n_test):
         p_img = scores["image_only"][0]
         conf, acc = _conf_and_acc(p_both)
         st.markdown(
-            f"- **Photo + data:** {p_both:.0%} adoption likelihood · raw confidence "
+            f"- **Photo + data:** {p_both:.0%} adoption pace (50% = average) · raw confidence "
             f"{conf:.0%} · **~{acc:.0f}% accurate on the held-out test set** (n={n_test:,})\n"
             f"- **Photo only (diagnostic):** {p_img:.0%} — uncalibrated; what the picture "
             "suggests without demographics\n"
@@ -215,8 +215,9 @@ def render():
         age = st.radio("Age", ["Any", "CHILD", "ADULT"], horizontal=True)
         ster = st.radio("Sterilized", ["Any", "Yes", "No", "Unknown"], horizontal=True)
         body = st.selectbox("Body type", ["Any"] + sorted(df["body_type"].dropna().unique()))
-        lo, hi = st.slider("Data score — P(adopt) %", 0, 100, (0, 100), step=5,
-                           help="The demographics-only adoption score. Filters every dog.")
+        lo, hi = st.slider("Data score — adoption pace %", 0, 100, (0, 100), step=5,
+                           help="The demographics-only adoption-pace score (50% = average). "
+                                "Filters every dog.")
         sort_label = st.selectbox("Sort by", list(SORTS.keys()))
         n_show = st.slider("How many to show", 3, 24, 10, step=1)
         shuffled = st.button("🎲 Shuffle", use_container_width=True)
@@ -248,7 +249,9 @@ def render():
 
     st.markdown(
         f"**{len(view):,} dogs match your filters** (data score {lo}–{hi}%). Showing {len(shown)}. "
-        "Likelihood = P(adopt in 30 days). **Data score** is the demographics-only baseline — "
+        "Score = adoption pace vs a typical dog (50% = average; higher = likely faster). These "
+        "Taiwan dogs have no recorded outcome, so it's a pace estimate by similarity to the "
+        "PetFinder dogs the model learned from. **Data score** is the demographics-only baseline — "
         "it's searchable across every dog, and barely changes between similar dogs, which is "
         "exactly why the photo carries the per-dog signal. Photo scores are computed for the "
         "dogs shown here, so photo-based sorts order this set.")

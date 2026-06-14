@@ -17,6 +17,13 @@ def _live_aucs():
 def render():
     st.title("Results")
 
+    st.info(
+        "**What every score on this site means.** We trained on whether a dog was adopted "
+        "within 30 days — which split our PetFinder data almost exactly in half (~50%), so "
+        "30 days is roughly the *typical* adoption time. Read every score as **adoption pace "
+        "vs a typical dog**: 50% = average, higher = likely faster, lower = likely slower."
+    )
+
     st.markdown("## The models running on this site")
     aucs = _live_aucs()
     c1, c2 = st.columns(2)
