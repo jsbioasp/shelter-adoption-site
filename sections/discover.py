@@ -1,5 +1,8 @@
 """Discover Dogs section — browse live Taiwan adoptable dogs. Owner: <student>.
 
+Page-level prose lives in content/discover.md (edit it there). The per-dog card
+and dialog text is data-driven, so it stays here.
+
 Shows 10 random adoptable dogs (shuffle for more), each scored from its actual
 listing photo two ways:
   - Photo + data : the full multi-task model (our best) — calibrated, continuous
@@ -19,7 +22,7 @@ from functools import lru_cache
 import streamlit as st
 from PIL import Image, ImageDraw
 
-from lib import data, features, models
+from lib import content, data, features, models
 
 
 @lru_cache(maxsize=1)
@@ -115,8 +118,7 @@ def _details_dialog(row, scores, n_test):
         search = "https://www.google.com/search?q=" + urllib.parse.quote(shelter_name)
         st.markdown(f"🔎 [Find this shelter online]({search}) — for its website, "
                     "contact form, or email")
-    st.caption("The Taiwan open-data feed lists shelters by phone and address only — no "
-               "email. Use the link above to reach a shelter's website or contact form.")
+    st.caption(content.load("discover")["contact_caption"])
     st.info(f"When you contact the shelter, mention **animal ID {_clean(row['animal_id'])}**.")
 
 
@@ -192,14 +194,14 @@ def _filter(df, shelter, sex, breed, age, ster, body, score_lo, score_hi):
 
 
 def render():
+    c = content.load("discover")
     st.title("Discover Dogs")
     meta = data.load_taiwan_meta()
     n_test = data.load_calibration().get("n_test", 0)
     df = _scored_frame(meta.get("fetched_at", "unknown"), meta.get("n_dogs", 0))
 
     if len(df) == 0:
-        st.warning("No Taiwan snapshot found. Run `python scripts/fetch_taiwan_dogs.py` "
-                   "to seed `data/taiwan_dogs.csv`.")
+        st.warning(c["no_snapshot"])
         return
 
     st.caption(f"Live from Taiwan MOA open data · {meta.get('n_dogs', len(df)):,} dogs · "
@@ -227,7 +229,7 @@ def render():
     data_sort = sort is not None and sort[0] == "score_data"
 
     if len(view) == 0:
-        st.warning("No dogs match these filters. Loosen them (e.g. widen the data-score range).")
+        st.warning(c["no_match"])
         return
 
     # Data-score sorts are deterministic over the whole filtered set → just take the
@@ -247,14 +249,7 @@ def render():
         ids = set(st.session_state["disc_ids"])
         shown = view[view["animal_id"].astype(str).isin(ids)]
 
-    st.markdown(
-        f"**{len(view):,} dogs match your filters** (data score {lo}–{hi}%). Showing {len(shown)}. "
-        "Score = adoption pace vs a typical dog (50% = average; higher = likely faster). These "
-        "Taiwan dogs have no recorded outcome, so it's a pace estimate by similarity to the "
-        "PetFinder dogs the model learned from. **Data score** is the demographics-only baseline — "
-        "it's searchable across every dog, and barely changes between similar dogs, which is "
-        "exactly why the photo carries the per-dog signal. Photo scores are computed for the "
-        "dogs shown here, so photo-based sorts order this set.")
+    st.markdown(c["results_intro"].format(n_view=len(view), lo=lo, hi=hi, n_shown=len(shown)))
 
     rows = [row for _, row in shown.iterrows()]
     with st.spinner(f"Downloading + scoring {len(rows)} photos…"):

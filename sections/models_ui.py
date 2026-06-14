@@ -1,5 +1,9 @@
 """Models UI section — the core "run the model on your dog" feature. Owner: <student>.
 
+Page prose lives in content/models.md (edit it there). The form controls, the
+confidence tiers, and the per-result captions stay here — they're tied to the
+scoring logic.
+
 Three modes matching the wireframe:
   - Data only   -> tabular model on 6 demographics
   - Image only  -> photo model, demographics zeroed
@@ -12,7 +16,7 @@ from io import BytesIO
 import streamlit as st
 from PIL import Image
 
-from lib import features, glossary, models
+from lib import content, features, glossary, models
 
 
 def _confidence(p: float) -> tuple[str, str]:
@@ -83,11 +87,9 @@ def _show_features(s6):
 
 
 def render():
+    c = content.load("models")
     st.title("Try the Models")
-    st.markdown(
-        "Run the adoption model on your own dog. Pick a mode — the more you give it, the "
-        "more the prediction has to work with."
-    )
+    st.markdown(c["intro"])
     glossary.render(st, "mlp", "cnn", "multitask", "strata")
 
     tab_data, tab_image, tab_both = st.tabs(
@@ -96,8 +98,7 @@ def render():
 
     # ---------------- Data only ----------------
     with tab_data:
-        st.markdown("Four facts any shelter already knows — the model turns them into six "
-                    "features. No photo needed.")
+        st.markdown(c["data_tab"])
         with st.form("data_only"):
             age = st.slider("Age (months)", 0, 120, 8)
             mixed = st.checkbox("Mixed-breed", value=True)
@@ -109,13 +110,11 @@ def render():
             p = models.score_data_only(s6)
             _show_result(p, features.stratum_label(s6), model="tabular_only")
             _show_features(s6)
-            st.caption("Heads-up: with only 6 demographic flags, this model produces just "
-                       "~16 distinct scores. For a per-dog read, add a photo.")
+            st.caption(c["data_heads_up"])
 
     # ---------------- Image only ----------------
     with tab_image:
-        st.markdown("Upload a listing photo. The model reads the dog from the picture "
-                    "alone (demographics zeroed) — useful for *what does the photo say?*")
+        st.markdown(c["image_tab"])
         up = st.file_uploader("Dog photo", type=["jpg", "jpeg", "png"], key="img_only")
         if up is not None:
             img = Image.open(BytesIO(up.read()))
@@ -123,13 +122,11 @@ def render():
             with st.spinner("Encoding photo + scoring…"):
                 p = models.score_image_only(img)
             _show_result(p, model="image_only", calibrated=False)
-            st.caption("Photo-axis only: the model is reading age/breed/body cues from the "
-                       "pixels, not aesthetics on their own (see the Results page).")
+            st.caption(c["image_axis_caption"])
 
     # ---------------- Data + image ----------------
     with tab_both:
-        st.markdown("The full model: photo **and** demographics together. This is the "
-                    "configuration the Results page reports at AUC ≈ 0.70.")
+        st.markdown(c["both_tab"])
         with st.form("data_image", clear_on_submit=False):
             up2 = st.file_uploader("Dog photo", type=["jpg", "jpeg", "png"], key="img_both")
             age2 = st.slider("Age (months)", 0, 120, 8, key="age2")

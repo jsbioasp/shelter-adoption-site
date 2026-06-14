@@ -1,12 +1,13 @@
 """Results section. Owner: <student>.
 
-Best models, predictions, confidence. The deployed-model AUCs are read live from
-the actual ensembles; the research ladder is cited from the findings docs.
+Layout + live numbers + table logic. The words live in content/results.md — edit
+them there. The deployed-model AUCs and calibration are read live from the
+ensembles / calibration.json and filled into the {braces}.
 """
 import pandas as pd
 import streamlit as st
 
-from lib import data, glossary, models
+from lib import content, data, glossary, models
 
 
 @st.cache_resource
@@ -15,14 +16,10 @@ def _live_aucs():
 
 
 def render():
+    c = content.load("results")
     st.title("Results")
 
-    st.info(
-        "**What every score on this site means.** We trained on whether a dog was adopted "
-        "within 30 days — which split our PetFinder data almost exactly in half (~50%), so "
-        "30 days is roughly the *typical* adoption time. Read every score as **adoption pace "
-        "vs a typical dog**: 50% = average, higher = likely faster, lower = likely slower."
-    )
+    st.info(c["score_meaning"])
     glossary.render(st, "auc", "rank_agreement", "calibration", "mlp", "cnn", "multitask")
 
     st.markdown("## The models running on this site")
@@ -32,9 +29,7 @@ def render():
               help="Tabular FlatMLP ensemble on 6 demographic features.")
     c2.metric("Photo + data model (AUC)", f"{aucs['multitask']:.3f}",
               help="Multi-task model: ConvNeXt photo trunk + adopt head + is_young aux head.")
-    st.caption("AUC = how well the model ranks a random adopted dog above a random "
-               "non-adopted one. 0.5 is a coin flip; 1.0 is perfect. These are the "
-               "*actual* 5-seed ensembles serving predictions on this site.")
+    st.caption(c["auc_caption"])
 
     st.markdown("## The research ladder (best configurations)")
     f = data.FINDINGS
@@ -49,30 +44,16 @@ def render():
          "Note": "From our experiments"},
     ])
     st.table(ladder)
-    st.caption("The deployed model is a touch below the research ceiling — it trades a "
-               "little AUC for a small, self-contained set of features that work on any "
-               "shelter's data. Honesty over leaderboard.")
+    st.caption(c["ladder_caption"])
 
-    _render_calibration()
+    _render_calibration(c)
 
     st.markdown("## What the model is most confident about")
-    st.markdown(
-        "- **Confident & right:** young dogs in uncaged listing photos — the model and the "
-        "outcomes agree. (Young *purebred* puppies adopt fastest of all; the caged-photo "
-        "lever helps the much larger young, mixed-breed group most.)\n"
-        "- **Confident & wrong:** cross-shelter transfer. The photo model is confident on "
-        "Taiwan institutional photos and confidently wrong — see the Datasets page.\n"
-        "- **Honest uncertainty:** for adult purebreds the signal is thin; the model "
-        "says so with probabilities near the base rate."
-    )
-    st.caption(
-        "Photo findings are preliminary. An uncaged listing photo is the clearest lever; "
-        "other composition factors (framing, pose, focus) show smaller, less consistent "
-        "effects. We're re-running the image experiments with newer findings and may revise these."
-    )
+    st.markdown(c["confident_about"])
+    st.caption(c["photo_preliminary"])
 
 
-def _render_calibration():
+def _render_calibration(c):
     cal = data.load_calibration()
     if not cal:
         st.info("Calibration not computed yet — run `python scripts/compute_calibration.py`.")
@@ -82,11 +63,7 @@ def _render_calibration():
     n_test = cal["n_test"]
 
     st.markdown("## Is the score trustworthy? Calibration")
-    st.markdown(
-        f"A score is only useful if it means what it says. **Calibration** asks: of the dogs "
-        f"the photo+data model rated ~50%, did ~50% actually get adopted? Measured on "
-        f"{n_test:,} held-out dogs, the answer is yes — predicted ≈ actual in every bin."
-    )
+    st.markdown(c["calibration_intro"].format(n_test=n_test))
 
     rows = []
     for b in di["bins"]:
@@ -99,17 +76,11 @@ def _render_calibration():
             "Gap (pp)": f"{b['gap_pp']:+.1f}",
         })
     st.table(pd.DataFrame(rows))
-    st.caption(f"Expected Calibration Error (ECE) = **{di['ece']:.3f}** — the average gap "
-               "between predicted and actual is under ~2 points. The photo-only view is "
-               f"noticeably less calibrated (ECE {models_cal['image_only']['ece']:.3f}), which "
-               "is why the site treats it as a diagnostic, not a probability.")
+    st.caption(c["calibration_caption"].format(
+        ece=di["ece"], image_ece=models_cal["image_only"]["ece"]))
 
     st.markdown("## Confidence thresholds — a real policy lever")
-    st.markdown(
-        "Because the photo+data model is calibrated, you can **act only on dogs it's sure "
-        "about**: predict above a threshold T (likely adopted) or below 1−T (likely not). "
-        "Higher T covers fewer dogs but is more accurate on the ones you keep."
-    )
+    st.markdown(c["thresholds_intro"])
     trows = []
     for t in di["thresholds"]:
         label = "≥ 50% sure (all dogs)" if t["threshold"] == 0.5 else f"≥ {t['threshold']:.0%} sure"
@@ -119,13 +90,6 @@ def _render_calibration():
             "Accuracy": f"{t['accuracy_pct']:.0f}%" if t["accuracy_pct"] is not None else "—",
         })
     st.table(pd.DataFrame(trows))
-    st.caption("This is the confidence lever a shelter actually uses: triage aggressively on "
-               "the high-confidence dogs, give the uncertain ones a human look.")
+    st.caption(c["thresholds_caption"])
 
-    st.info(
-        "**Why a *multi-task* model?** In the M06 experiments, a naive flat concatenation of "
-        "photo + tabular features was badly overconfident (ECE ≈ 0.20 — it claimed 90% on "
-        "dogs that adopted ~70% of the time). The multi-task architecture this site deploys "
-        "keeps the photo signal in a separate trunk and stays calibrated (ECE ≈ "
-        f"{di['ece']:.2f}). Calibration, not just AUC, is why we chose it."
-    )
+    st.info(c["why_multitask"].format(ece=di["ece"]))
