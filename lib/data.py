@@ -68,6 +68,32 @@ FINDINGS = {
 }
 
 
+# The per-shelter ranking behind the Spearman 0.927 finding: the 7 Taiwan
+# shelters that have a published government adoption rate, scored by the
+# demographics model (the recipe that produced 0.927), mean over 3 seeds.
+# "our_score" = mean predicted P(adopt) for that shelter's animals; "gov_rank"
+# is by published rate (the three New Taipei shelters tie at 95%). Reproduced
+# from the cross-dataset experiments; the Spearman matches the M05 finding.
+# Scope note: this is the validated set (7 shelters with a published rate).
+# Across every shelter that maps to a rated city the correlation falls to
+# ~0.54 — so the claim is scoped to "the 7 published-rate shelters", not all
+# of Taiwan. See lib.data.FINDINGS["taiwan_spearman"].
+TAIWAN_SHELTER_RANKING = {
+    "spearman": 0.927,
+    "n_shelters": 7,
+    "source": "Reproduced from our cross-dataset experiments (per-shelter mean over 3 seeds); the rank correlation matches our M05 finding.",
+    "rows": [
+        {"Our rank": 1, "Shelter": "New Taipei (Bali)",    "Published": "95%", "Our score": "0.51", "Gov rank": "1 (tie)", "Shift": "—"},
+        {"Our rank": 2, "Shelter": "New Taipei (Wugu)",    "Published": "95%", "Our score": "0.45", "Gov rank": "1 (tie)", "Shift": "—"},
+        {"Our rank": 3, "Shelter": "New Taipei (Xindian)", "Published": "95%", "Our score": "0.45", "Gov rank": "1 (tie)", "Shift": "—"},
+        {"Our rank": 4, "Shelter": "Kaohsiung (Yanchao)",  "Published": "77%", "Our score": "0.37", "Gov rank": "5",       "Shift": "▲ +1"},
+        {"Our rank": 5, "Shelter": "Taipei City",          "Published": "88%", "Our score": "0.33", "Gov rank": "4",       "Shift": "▼ −1"},
+        {"Our rank": 6, "Shelter": "Nantou",               "Published": "47%", "Our score": "0.29", "Gov rank": "6",       "Shift": "—"},
+        {"Our rank": 7, "Shelter": "Yunlin",               "Published": "39%", "Our score": "0.27", "Gov rank": "7",       "Shift": "—"},
+    ],
+}
+
+
 # --------------------------------------------------------------------------
 # Taiwan snapshot
 # --------------------------------------------------------------------------
