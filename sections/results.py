@@ -49,12 +49,18 @@ def render():
 
     st.markdown("## What the model is most confident about")
     st.markdown(
-        "- **Confident & right:** young, small, mixed-breed dogs with clean photos — "
-        "the model and the outcomes agree.\n"
+        "- **Confident & right:** young dogs in uncaged listing photos — the model and the "
+        "outcomes agree. (Young *purebred* puppies adopt fastest of all; the caged-photo "
+        "lever helps the much larger young, mixed-breed group most.)\n"
         "- **Confident & wrong:** cross-shelter transfer. The photo model is confident on "
         "Taiwan institutional photos and confidently wrong — see the Datasets page.\n"
         "- **Honest uncertainty:** for adult purebreds the signal is thin; the model "
         "says so with probabilities near the base rate."
+    )
+    st.caption(
+        "Photo findings are preliminary. An uncaged listing photo is the clearest lever; "
+        "other composition factors (framing, pose, focus) show smaller, less consistent "
+        "effects. We're re-running the image experiments with newer findings and may revise these."
     )
 
 
