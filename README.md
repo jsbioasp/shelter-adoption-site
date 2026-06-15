@@ -73,3 +73,6 @@ commit. Photos are referenced by URL, so the snapshot stays small.
 - Shared changes to `lib/` get a quick review (they affect everyone).
 - Open a PR → merge to `main` → site redeploys. Keep sections independent so PRs
   don't collide.
+
+## Contributors:
+- Neo Chou
