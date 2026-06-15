@@ -79,3 +79,10 @@ def stratum_key(shared6: np.ndarray) -> str:
     is_young = int(shared6[1])
     is_mixed = int(shared6[2])
     return f"y{is_young}_m{is_mixed}"
+
+
+def stratum_label(shared6: np.ndarray) -> str:
+    """Plain-English name for the stratum, e.g. 'young, mixed-breed'."""
+    young = "young" if int(shared6[1]) else "adult"
+    breed = "mixed-breed" if int(shared6[2]) else "purebred"
+    return f"{young}, {breed}"

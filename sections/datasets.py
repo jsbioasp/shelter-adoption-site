@@ -1,11 +1,12 @@
 """Datasets & Experiments section. Owner: <student>.
 
-Why PetFinder + Taiwan, and the notable successes and failures. Every number
-here comes from lib.data.FINDINGS so nothing is unsourced.
+Layout + numbers + logic only. The words live in content/datasets.md — edit them
+there. Numbers stay sourced in lib.data.FINDINGS and are filled into the {braces}.
 """
+import pandas as pd
 import streamlit as st
 
-from lib import data
+from lib import content, data, glossary
 
 
 @st.cache_data
@@ -20,61 +21,33 @@ def _taiwan_summary():
 
 
 def render():
+    c = content.load("datasets")
+    f = data.FINDINGS
+    r = data.TAIWAN_SHELTER_RANKING
+
     st.title("Datasets & Experiments")
 
     st.markdown("## Two datasets, two jobs")
     col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(
-            "### PetFinder (Malaysia)\n"
-            "~8,000 dogs with **photos, descriptions, and resolved adoption outcomes**. "
-            "This is where we *train* — it has everything a supervised model needs. "
-            "It answers: *what predicts adoption when you can see the listing?*"
-        )
-    with col2:
-        st.markdown(
-            "### Taiwan MOA shelters\n"
-            "Thousands of currently-adoptable dogs from Taiwan's public open-data feed — "
-            "**live, but no outcome labels**. This is where we *deploy and test transfer*. "
-            "It answers: *does what we learned in Malaysia travel to Taiwan?*"
-        )
+    col1.markdown(c["petfinder"])
+    col2.markdown(c["taiwan"])
 
     st.markdown("### Why dogs, why shelters")
-    st.markdown(
-        "Dogs are the larger, more balanced population in both datasets, and shelter "
-        "listings are where a prediction can actually change an outcome. Cats and other "
-        "species were out of scope to keep the comparison clean."
-    )
+    st.markdown(c["why_dogs"])
 
     st.markdown("## Notable successes")
-    f = data.FINDINGS
-    st.success(
-        f"**Rankings transfer across countries.** The model's per-shelter ranking matches "
-        f"Taiwan's published adoption rates at Spearman **{f['taiwan_spearman']['value']}** — "
-        f"even though the absolute rates differ. *{f['taiwan_spearman']['source']}*"
-    )
-    st.success(
-        f"**Photos add real signal.** Adding CNN photo features lifts adoption AUC by "
-        f"**{f['m06_multitask_lift']['value']}** over the tabular baseline. "
-        f"*{f['m06_multitask_lift']['source']}*"
-    )
-    st.success(
-        f"**One lever beats a fancy model.** Within young mixed-breed dogs, caged photos "
-        f"are associated with **{f['caged_rate_gap']['value']}** in 30-day adoption. "
-        f"*{f['caged_rate_gap']['source']}*"
-    )
+    st.success(c["rankings_success"].format(n_shelters=r["n_shelters"], spearman=r["spearman"]))
+    st.table(pd.DataFrame(r["rows"]).set_index("Our rank"))
+    st.caption(c["ranking_caption"].format(source=r["source"]))
+    st.caption(c["ranking_scope"])
+    st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
+    st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
+
+    glossary.render(st, "auc", "rank_agreement")
 
     st.markdown("## Notable failures (the honest part)")
-    st.warning(
-        "**Photo features don't transfer cleanly.** The CNN trained on Malaysian listings "
-        "scored Taipei City's institutional photos *lowest* — even though Taipei has "
-        "Taiwan's highest published adoption rate. Photo content is location-specific."
-    )
-    st.warning(
-        "**Tabular data hits a ceiling fast.** Demographics alone cap out around "
-        f"**{f['m05_accuracy_ceiling']['value']}**. No amount of model tuning broke past it — "
-        "the information just isn't in the columns."
-    )
+    st.warning(c["photo_transfer"])
+    st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
 
     summary = _taiwan_summary()
     if summary is not None:
@@ -87,5 +60,4 @@ def render():
         st.markdown("**Adoptable dogs by shelter (top 12)**")
         st.bar_chart(by_shelter)
     else:
-        st.info("Taiwan snapshot not loaded yet — the Discover Dogs page explains the "
-                "scheduled refresh.")
+        st.info(c["taiwan_not_loaded"])

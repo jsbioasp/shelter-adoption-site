@@ -1,5 +1,9 @@
 """Models UI section — the core "run the model on your dog" feature. Owner: <student>.
 
+Page prose lives in content/models.md (edit it there). The form controls, the
+confidence tiers, and the per-result captions stay here — they're tied to the
+scoring logic.
+
 Three modes matching the wireframe:
   - Data only   -> tabular model on 6 demographics
   - Image only  -> photo model, demographics zeroed
@@ -12,41 +16,48 @@ from io import BytesIO
 import streamlit as st
 from PIL import Image
 
-from lib import features, models
+from lib import content, features, glossary, models
 
 
 def _confidence(p: float) -> tuple[str, str]:
-    """Map P(adopt) to a tier label + plain-English read."""
+    """Map an adoption-pace score to a tier label + plain-English read.
+
+    0.5 is the average pace: the 30-day training cutoff split PetFinder ~50/50,
+    so the tiers read as faster / around / slower than a typical dog.
+    """
     if p >= 0.60:
-        return "🟢 Strong", (f"About {p:.0%} of dogs like this are adopted within 30 days — "
-                              "above the typical shelter base rate.")
+        return "🟢 Faster than average", (f"Scores {p:.0%} — above the 50% average, so this dog "
+                                          "looks likely to be adopted faster than a typical dog.")
     if p >= 0.40:
-        return "🟡 Moderate", (f"Around {p:.0%} — roughly a coin-flip-to-even chance within "
-                               "30 days. Worth a presentation boost.")
-    return "🔴 At risk", (f"Only about {p:.0%} within 30 days. These dogs benefit most from "
-                          "a better photo, a featured listing, or an early foster.")
+        return "🟡 About average", (f"Scores {p:.0%} — near the 50% average pace. A better photo "
+                                    "or a featured listing can still nudge it up.")
+    return "🔴 Slower than average", (f"Scores {p:.0%} — below the 50% average, so this dog likely "
+                                      "adopts slower than typical. It benefits most from a better "
+                                      "photo, a featured listing, or an early foster.")
 
 
 def _show_result(p: float, stratum: str | None = None, model: str = "data_image",
                  calibrated: bool = True):
     tier, read = _confidence(p)
     c1, c2 = st.columns([1, 2])
-    c1.metric("P(adopt in 30 days)", f"{p:.0%}")
+    c1.metric("Adoption pace", f"{p:.0%}",
+              help="50% = average pace (our 30-day training cutoff split PetFinder ~50/50). "
+                   "Higher = likely faster than a typical dog; lower = slower.")
     c2.markdown(f"### {tier}\n{read}")
     if calibrated:
         c = models.confidence_from_prob(p, model=model)
         acc = f"~{c['accuracy_pct']:.0f}%" if c["accuracy_pct"] is not None else "—"
         st.caption(f"Confidence: among dogs the model is this sure about, it's right **{acc}** "
-                   "of the time. This is a *calibrated* probability — predicted ≈ actual "
-                   "(see Results). Likelihood ≠ confidence: a confident *low* score is still "
-                   "a low score.")
+                   "of the time. This is a *calibrated* score — predicted ≈ actual "
+                   "(see Results). Pace ≠ confidence: a confident *slow* score is still "
+                   "a slow score.")
     else:
         st.caption("⚠️ Photo-only is a **diagnostic**, not a calibrated probability "
                    "(it's less calibrated than the photo+data model — see Results). "
                    "Read it as 'what the picture suggests', not a reliable adoption rate.")
     if stratum:
-        st.caption(f"Demographic stratum: **{stratum}** "
-                   "(y = young, m = mixed-breed; the rate-gap analysis is run within strata).")
+        st.caption(f"Demographic group: **{stratum}** — effects like the photo lever are "
+                   "measured within a group, so we compare like with like.")
     st.caption("Observational, not causal. Use to triage, not to decide.")
 
 
@@ -76,11 +87,10 @@ def _show_features(s6):
 
 
 def render():
+    c = content.load("models")
     st.title("Try the Models")
-    st.markdown(
-        "Run the adoption model on your own dog. Pick a mode — the more you give it, the "
-        "more the prediction has to work with."
-    )
+    st.markdown(c["intro"])
+    glossary.render(st, "mlp", "cnn", "multitask", "strata")
 
     tab_data, tab_image, tab_both = st.tabs(
         ["📋 Data only", "📷 Image only", "📋📷 Data + image"]
@@ -88,8 +98,7 @@ def render():
 
     # ---------------- Data only ----------------
     with tab_data:
-        st.markdown("Four facts any shelter already knows — the model turns them into six "
-                    "features. No photo needed.")
+        st.markdown(c["data_tab"])
         with st.form("data_only"):
             age = st.slider("Age (months)", 0, 120, 8)
             mixed = st.checkbox("Mixed-breed", value=True)
@@ -99,15 +108,13 @@ def render():
         if go:
             s6 = features.derive_shared6(age, mixed, gender, sterilized)
             p = models.score_data_only(s6)
-            _show_result(p, features.stratum_key(s6), model="tabular_only")
+            _show_result(p, features.stratum_label(s6), model="tabular_only")
             _show_features(s6)
-            st.caption("Heads-up: with only 6 demographic flags, this model produces just "
-                       "~16 distinct scores. For a per-dog read, add a photo.")
+            st.caption(c["data_heads_up"])
 
     # ---------------- Image only ----------------
     with tab_image:
-        st.markdown("Upload a listing photo. The model reads the dog from the picture "
-                    "alone (demographics zeroed) — useful for *what does the photo say?*")
+        st.markdown(c["image_tab"])
         up = st.file_uploader("Dog photo", type=["jpg", "jpeg", "png"], key="img_only")
         if up is not None:
             img = Image.open(BytesIO(up.read()))
@@ -115,13 +122,11 @@ def render():
             with st.spinner("Encoding photo + scoring…"):
                 p = models.score_image_only(img)
             _show_result(p, model="image_only", calibrated=False)
-            st.caption("Photo-axis only: the model is reading age/breed/body cues from the "
-                       "pixels, not aesthetics on their own (see the Results page).")
+            st.caption(c["image_axis_caption"])
 
     # ---------------- Data + image ----------------
     with tab_both:
-        st.markdown("The full model: photo **and** demographics together. This is the "
-                    "configuration the Results page reports at AUC ≈ 0.70.")
+        st.markdown(c["both_tab"])
         with st.form("data_image", clear_on_submit=False):
             up2 = st.file_uploader("Dog photo", type=["jpg", "jpeg", "png"], key="img_both")
             age2 = st.slider("Age (months)", 0, 120, 8, key="age2")
@@ -138,5 +143,5 @@ def render():
                 s6 = features.derive_shared6(age2, mixed2, gender2, ster2)
                 with st.spinner("Encoding photo + scoring…"):
                     p = models.score_data_and_image(img2, s6)
-                _show_result(p, features.stratum_key(s6), model="data_image")
+                _show_result(p, features.stratum_label(s6), model="data_image")
                 _show_features(s6)
