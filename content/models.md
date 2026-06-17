@@ -18,4 +18,4 @@ Upload a listing photo. The model reads the dog from the picture alone (demograp
 Photo-axis only: the model is reading age/breed/body cues from the pixels, not aesthetics on their own (see the Results page).
 
 @both_tab
-The full model: photo **and** demographics together. This is the configuration the Results page reports at AUC ≈ 0.70.
+The full model: photo **and** demographics together. This is the configuration the Results page reports at AUC ≈ 0.72.

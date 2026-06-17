@@ -27,26 +27,39 @@ def render():
 
     st.title("Datasets & Experiments")
 
-    st.markdown("## Two datasets, two jobs")
-    col1, col2 = st.columns(2)
+    st.markdown("## Three datasets, three jobs")
+    col1, col2, col3 = st.columns(3)
     col1.markdown(c["petfinder"])
-    col2.markdown(c["taiwan"])
+    col2.markdown(c["austin"])
+    col3.markdown(c["taiwan"])
 
     st.markdown("### Why dogs, why shelters")
     st.markdown(c["why_dogs"])
+
+    st.markdown("## The catch: every dataset is broken in its own way")
+    st.markdown(c["challenges_intro"])
+    cc1, cc2, cc3 = st.columns(3)
+    cc1.markdown(c["challenge_petfinder"])
+    cc2.markdown(c["challenge_taiwan"])
+    cc3.markdown(c["challenge_austin"])
+    st.info(c["bias_note"])
 
     st.markdown("## Notable successes")
     st.success(c["rankings_success"].format(n_shelters=r["n_shelters"], spearman=r["spearman"]))
     st.table(pd.DataFrame(r["rows"]).set_index("Our rank"))
     st.caption(c["ranking_caption"].format(source=r["source"]))
     st.caption(c["ranking_scope"])
+    with st.expander("How we measure transfer — and which model earns the 0.927"):
+        st.markdown(c["ranking_how"])
     st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
     st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
+    st.success(c["photo_count"])
 
     glossary.render(st, "auc", "rank_agreement")
 
     st.markdown("## Notable failures (the honest part)")
     st.warning(c["photo_transfer"])
+    st.info(c["photo_transfer_deep"])
     st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
 
     summary = _taiwan_summary()

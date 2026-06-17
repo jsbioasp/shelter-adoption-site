@@ -28,7 +28,8 @@ def render():
     c1.metric("Data-only model (AUC)", f"{aucs['tabular_only']:.3f}",
               help="Tabular FlatMLP ensemble on 6 demographic features.")
     c2.metric("Photo + data model (AUC)", f"{aucs['multitask']:.3f}",
-              help="Multi-task model: ConvNeXt photo trunk + adopt head + is_young aux head.")
+              help="Domain-invariant multi-task model: ConvNeXt photo trunk trained on "
+                   "PetFinder + Taiwan photos, + adopt head.")
     st.caption(c["auc_caption"])
 
     st.markdown("## The research ladder (best configurations)")
@@ -45,6 +46,9 @@ def render():
     ])
     st.table(ladder)
     st.caption(c["ladder_caption"])
+
+    st.markdown("## Why this photo model")
+    st.markdown(c["why_photo_model"])
 
     _render_calibration(c)
 

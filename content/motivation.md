@@ -23,4 +23,4 @@ Faster adoptions mean shorter shelter stays, less crowding, fewer euthanizations
 - **Read the experiments** — why PetFinder and Taiwan, and the successes and failures behind the numbers.
 
 @honest_framing
-**Honest framing:** these models are decision *support*, not decision makers. The clearest lever is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.70), and every prediction is observational, not causal. The Results page is candid about the limits.
+**Honest framing:** these models are decision *support*, not decision makers. The clearest lever is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.72), and every prediction is observational, not causal. The Results page is candid about the limits.

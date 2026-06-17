@@ -11,6 +11,9 @@ AUC = how well the model ranks a random adopted dog above a random non-adopted o
 @ladder_caption
 The deployed model is a touch below the research ceiling — it trades a little AUC for a small, self-contained set of features that work on any shelter's data. Honesty over leaderboard.
 
+@why_photo_model
+**Why *this* photo model.** The deployed photo+data model is **domain-invariant**: its ConvNeXt trunk was trained on **both** PetFinder and Taiwan shelter photos, so it learns to read the *dog* rather than the photographer's style. That makes it the **sharper ranker** (AUC ~0.72) with more sensible per-photo reads — which is why we deploy it. The trade is a little **calibration**: its probabilities run slightly looser (ECE ~0.05 vs ~0.02 for a PetFinder-only model — predicted ≈ actual within ~5 points instead of ~2). We judged the better image handling worth the looser probabilities.
+
 @confident_about
 - **Confident & right:** young dogs in uncaged listing photos — the model and the outcomes agree. (Young *purebred* puppies adopt fastest of all; the caged-photo lever helps the much larger young, mixed-breed group most.)
 - **Confident & wrong:** cross-shelter transfer. The photo model is confident on Taiwan institutional photos and confidently wrong — see the Datasets page.
@@ -20,10 +23,10 @@ The deployed model is a touch below the research ceiling — it trades a little 
 Photo findings are preliminary. An uncaged listing photo is the clearest lever; other composition factors (framing, pose, focus) show smaller, less consistent effects. We're re-running the image experiments with newer findings and may revise these.
 
 @calibration_intro
-A score is only useful if it means what it says. **Calibration** asks: of the dogs the photo+data model rated ~50%, did ~50% actually get adopted? Measured on {n_test:,} held-out dogs, the answer is yes — predicted ≈ actual in every bin.
+A score is only useful if it means what it says. **Calibration** asks: of the dogs the photo+data model rated ~50%, did ~50% actually get adopted? Measured on {n_test:,} held-out dogs, predicted tracks actual across the range — within a few points per bin (the deployed domain-invariant model runs a touch looser than a PetFinder-only one; see *Why this photo model*).
 
 @calibration_caption
-Expected Calibration Error (ECE) = **{ece:.3f}** — the average gap between predicted and actual is under ~2 points. The photo-only view is noticeably less calibrated (ECE {image_ece:.3f}), which is why the site treats it as a diagnostic, not a probability.
+Expected Calibration Error (ECE) = **{ece:.3f}** — the average gap between predicted and actual is about **5 points** (the domain-invariant photo model trades a little calibration for sharper ranking — see *Why this photo model*). The photo-only view is looser still (ECE {image_ece:.3f}), which is why the site treats it as a diagnostic, not a probability.
 
 @thresholds_intro
 Because the photo+data model is calibrated, you can **act only on dogs it's sure about**: predict above a threshold T (likely adopted) or below 1−T (likely not). Higher T covers fewer dogs but is more accurate on the ones you keep.
