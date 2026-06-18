@@ -106,7 +106,11 @@ def _load_tabular_ensemble() -> dict:
 
 @lru_cache(maxsize=1)
 def _load_multitask_ensemble() -> dict:
-    with open(MODELS_DIR / "m06_ensemble.pkl", "rb") as f:
+    # Deployed photo model = bridge_YU: same MultiTaskMLP, but its ConvNeXt trunk was
+    # pretrained across BOTH PetFinder and Taiwan COA photos (domain-invariant), so it
+    # reads the dog rather than the photographer's style. Sharper ranker (AUC ~0.72),
+    # slightly looser calibration (ECE ~0.05) — see content/results.md "why_photo_model".
+    with open(MODELS_DIR / "m06_bridge_yu.pkl", "rb") as f:
         return pickle.load(f)
 
 

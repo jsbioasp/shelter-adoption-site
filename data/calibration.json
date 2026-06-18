@@ -1,5 +1,5 @@
 {
-  "n_test": 1985,
+  "n_test": 1981,
   "models": {
     "tabular_only": {
       "auc": 0.653,
@@ -110,80 +110,80 @@
       ]
     },
     "image_only": {
-      "auc": 0.685,
-      "ece": 0.074,
+      "auc": 0.706,
+      "ece": 0.064,
       "bins": [
         {
           "lo": 0.0,
           "hi": 0.1,
-          "n": 11,
-          "actual_pct": 9.1,
-          "pred_pct": 8.2,
-          "gap_pp": 0.8
+          "n": 2,
+          "actual_pct": 0.0,
+          "pred_pct": 8.4,
+          "gap_pp": -8.4
         },
         {
           "lo": 0.1,
           "hi": 0.2,
-          "n": 53,
-          "actual_pct": 7.5,
-          "pred_pct": 16.0,
-          "gap_pp": -8.4
+          "n": 62,
+          "actual_pct": 22.6,
+          "pred_pct": 16.6,
+          "gap_pp": 6.0
         },
         {
           "lo": 0.2,
           "hi": 0.3,
-          "n": 116,
-          "actual_pct": 22.4,
-          "pred_pct": 25.6,
-          "gap_pp": -3.2
+          "n": 226,
+          "actual_pct": 20.8,
+          "pred_pct": 25.7,
+          "gap_pp": -4.9
         },
         {
           "lo": 0.3,
           "hi": 0.4,
-          "n": 188,
-          "actual_pct": 28.7,
-          "pred_pct": 35.3,
-          "gap_pp": -6.6
+          "n": 337,
+          "actual_pct": 29.7,
+          "pred_pct": 35.1,
+          "gap_pp": -5.4
         },
         {
           "lo": 0.4,
           "hi": 0.5,
-          "n": 296,
-          "actual_pct": 33.8,
-          "pred_pct": 45.6,
-          "gap_pp": -11.8
+          "n": 484,
+          "actual_pct": 41.1,
+          "pred_pct": 45.4,
+          "gap_pp": -4.3
         },
         {
           "lo": 0.5,
           "hi": 0.6,
-          "n": 560,
-          "actual_pct": 47.3,
-          "pred_pct": 55.3,
-          "gap_pp": -7.9
+          "n": 699,
+          "actual_pct": 61.9,
+          "pred_pct": 54.9,
+          "gap_pp": 7.1
         },
         {
           "lo": 0.6,
           "hi": 0.7,
-          "n": 459,
-          "actual_pct": 58.4,
-          "pred_pct": 64.6,
-          "gap_pp": -6.3
+          "n": 168,
+          "actual_pct": 75.6,
+          "pred_pct": 62.7,
+          "gap_pp": 12.9
         },
         {
           "lo": 0.7,
           "hi": 0.8,
-          "n": 243,
-          "actual_pct": 67.1,
-          "pred_pct": 74.0,
-          "gap_pp": -6.9
+          "n": 3,
+          "actual_pct": 100.0,
+          "pred_pct": 71.3,
+          "gap_pp": 28.7
         },
         {
           "lo": 0.8,
           "hi": 0.9,
-          "n": 59,
-          "actual_pct": 79.7,
-          "pred_pct": 82.2,
-          "gap_pp": -2.6
+          "n": 0,
+          "actual_pct": null,
+          "pred_pct": null,
+          "gap_pp": null
         },
         {
           "lo": 0.9,
@@ -197,101 +197,101 @@
       "thresholds": [
         {
           "threshold": 0.5,
-          "coverage_pct": 100.0,
-          "accuracy_pct": 62.0
+          "coverage_pct": 100,
+          "accuracy_pct": 66
         },
         {
           "threshold": 0.6,
-          "coverage_pct": 57.0,
-          "accuracy_pct": 67.0
+          "coverage_pct": 40,
+          "accuracy_pct": 75
         },
         {
           "threshold": 0.7,
-          "coverage_pct": 24.0,
-          "accuracy_pct": 74.0
+          "coverage_pct": 15,
+          "accuracy_pct": 79
         },
         {
           "threshold": 0.8,
-          "coverage_pct": 6.0,
-          "accuracy_pct": 86.0
+          "coverage_pct": 3,
+          "accuracy_pct": 78
         }
       ]
     },
     "data_image": {
-      "auc": 0.703,
-      "ece": 0.023,
+      "auc": 0.723,
+      "ece": 0.052,
       "bins": [
         {
           "lo": 0.0,
           "hi": 0.1,
-          "n": 63,
-          "actual_pct": 12.7,
-          "pred_pct": 7.4,
-          "gap_pp": 5.3
+          "n": 8,
+          "actual_pct": 0.0,
+          "pred_pct": 8.6,
+          "gap_pp": -8.6
         },
         {
           "lo": 0.1,
           "hi": 0.2,
-          "n": 169,
-          "actual_pct": 17.2,
-          "pred_pct": 15.4,
-          "gap_pp": 1.8
+          "n": 116,
+          "actual_pct": 19.0,
+          "pred_pct": 15.8,
+          "gap_pp": 3.2
         },
         {
           "lo": 0.2,
           "hi": 0.3,
-          "n": 217,
-          "actual_pct": 29.5,
+          "n": 223,
+          "actual_pct": 18.8,
           "pred_pct": 24.9,
-          "gap_pp": 4.6
+          "gap_pp": -6.1
         },
         {
           "lo": 0.3,
           "hi": 0.4,
-          "n": 221,
-          "actual_pct": 34.4,
-          "pred_pct": 35.3,
-          "gap_pp": -0.9
+          "n": 290,
+          "actual_pct": 31.0,
+          "pred_pct": 34.9,
+          "gap_pp": -3.9
         },
         {
           "lo": 0.4,
           "hi": 0.5,
-          "n": 291,
-          "actual_pct": 43.3,
-          "pred_pct": 45.5,
-          "gap_pp": -2.2
+          "n": 414,
+          "actual_pct": 41.5,
+          "pred_pct": 45.4,
+          "gap_pp": -3.8
         },
         {
           "lo": 0.5,
           "hi": 0.6,
-          "n": 422,
-          "actual_pct": 52.6,
-          "pred_pct": 55.2,
-          "gap_pp": -2.6
+          "n": 625,
+          "actual_pct": 59.5,
+          "pred_pct": 54.8,
+          "gap_pp": 4.7
         },
         {
           "lo": 0.6,
           "hi": 0.7,
-          "n": 382,
-          "actual_pct": 62.6,
-          "pred_pct": 64.5,
-          "gap_pp": -1.9
+          "n": 283,
+          "actual_pct": 73.1,
+          "pred_pct": 63.7,
+          "gap_pp": 9.4
         },
         {
           "lo": 0.7,
           "hi": 0.8,
-          "n": 193,
-          "actual_pct": 74.1,
-          "pred_pct": 74.3,
-          "gap_pp": -0.2
+          "n": 22,
+          "actual_pct": 81.8,
+          "pred_pct": 72.3,
+          "gap_pp": 9.5
         },
         {
           "lo": 0.8,
           "hi": 0.9,
-          "n": 27,
-          "actual_pct": 77.8,
-          "pred_pct": 82.7,
-          "gap_pp": -4.9
+          "n": 0,
+          "actual_pct": null,
+          "pred_pct": null,
+          "gap_pp": null
         },
         {
           "lo": 0.9,
@@ -305,23 +305,23 @@
       "thresholds": [
         {
           "threshold": 0.5,
-          "coverage_pct": 100.0,
-          "accuracy_pct": 65.0
+          "coverage_pct": 100,
+          "accuracy_pct": 67
         },
         {
           "threshold": 0.6,
-          "coverage_pct": 64.0,
-          "accuracy_pct": 70.0
+          "coverage_pct": 48,
+          "accuracy_pct": 75
         },
         {
           "threshold": 0.7,
-          "coverage_pct": 34.0,
-          "accuracy_pct": 77.0
+          "coverage_pct": 19,
+          "accuracy_pct": 82
         },
         {
           "threshold": 0.8,
-          "coverage_pct": 13.0,
-          "accuracy_pct": 83.0
+          "coverage_pct": 6,
+          "accuracy_pct": 82
         }
       ]
     }
