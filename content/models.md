@@ -19,3 +19,18 @@ Photo-axis only: the model is reading age/breed/body cues from the pixels, not a
 
 @both_tab
 The full model: photo **and** demographics together. This is the configuration the Results page reports at AUC ≈ 0.72.
+
+@reshoot_tab
+You can't change a dog — but you *can* change its photo. This shows **real shelter dogs with the same profile** that have **strong listing photos**, so you can see what a good photo of a dog like this looks like.
+
+@reshoot_experimental_note
+**Highly experimental.** These are real PetFinder dogs with similar demographics and high-quality photos — not edits of your dog. A better photo lifts our model's score only modestly (~+0.07), and it changes the *presentation*, never the dog. Use it for photo coaching, not as a way to make a dog more adoptable.
+
+@reshoot_your_dog_caption
+This is *your* dog's score (photo + demographics). The examples below are **different individuals** with the same profile — compare their *photos*, not their dogs.
+
+@reshoot_takeaway
+**What to copy from these photos:** the dog fills the frame, faces the camera, is well-lit, and sits against a clean, uncluttered background. Those four composition traits are what our higher-scoring listings share — and they're free to fix on a re-shoot.
+
+@reshoot_honesty_caption
+The pace score is *model output*, validated against PetFinder adoption speed (not Taiwan). Photo quality ≠ adoptability: well-photographed dogs don't all adopt fast. Use to coach listings, not to rank animals.

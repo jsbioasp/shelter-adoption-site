@@ -47,7 +47,7 @@ lib/                    # shared infrastructure (not section-owned)
   models.py             #   model load + 3 scoring modes (vendored architectures)
   features.py           #   form inputs / Taiwan rows -> SHARED_6 vector
   data.py               #   findings constants + Taiwan snapshot loader
-models/                 # m06_ensemble.pkl (1 MB) + m06_tabular_only.pkl (59 KB)
+models/                 # m06_bridge_yu.pkl (1 MB) + m06_tabular_only.pkl (59 KB)
 data/                   # taiwan_dogs.csv snapshot (refreshed by the Action)
 scripts/fetch_taiwan_dogs.py   # the ETL the Action runs
 .github/workflows/fetch_taiwan_dogs.yml   # daily snapshot refresh
