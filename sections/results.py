@@ -50,8 +50,12 @@ def render():
     st.markdown("## What we found")
     st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
     st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
+    st.info(c["older_dog_signal"])
     st.success(c["photo_count"])
     st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
+    st.warning(c["sentiment_null"])
+    with st.expander("Where does the signal come from?"):
+        st.markdown(c["signal_mechanism"])
 
     st.markdown("## Why this photo model")
     st.markdown(c["why_photo_model"])
