@@ -22,7 +22,7 @@ from functools import lru_cache
 import streamlit as st
 from PIL import Image, ImageDraw
 
-from lib import content, data, features, models
+from lib import content, data, features, glossary, models
 
 
 @lru_cache(maxsize=1)
@@ -210,6 +210,8 @@ def render():
                f"{meta.get('n_shelters', df['shelter_name'].nunique())} shelters · "
                f"refreshed {meta.get('fetched_at', 'unknown')} "
                f"([source]({data.TAIWAN_DATASET_PAGE}))")
+
+    glossary.render(st, "calibration")
 
     with st.sidebar:
         st.markdown("### Search dogs")

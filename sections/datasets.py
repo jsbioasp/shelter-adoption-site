@@ -36,6 +36,8 @@ def render():
     st.markdown("### Why dogs, why shelters")
     st.markdown(c["why_dogs"])
 
+    glossary.render(st, "auc", "rank_agreement", "cnn")
+
     st.markdown("## The catch: every dataset is broken in its own way")
     st.markdown(c["challenges_intro"])
     cc1, cc2, cc3 = st.columns(3)
@@ -54,8 +56,6 @@ def render():
     st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
     st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
     st.success(c["photo_count"])
-
-    glossary.render(st, "auc", "rank_agreement", "cnn")
 
     st.markdown("## Notable failures (the honest part)")
     st.warning(c["photo_transfer"])

@@ -1,7 +1,7 @@
 """Plain-English definitions of the terms the site uses, in one place.
 
-render(st, *keys) drops an expander defining just the terms a page actually
-shows, so each page explains its own jargon and no term drifts between pages.
+render(st, *keys) shows, inline at the top of a page, just the terms that page
+actually uses, so each page explains its own jargon and no term drifts between pages.
 Keep every definition short and novice-friendly.
 """
 from __future__ import annotations
@@ -31,8 +31,11 @@ TERMS = {
 
 
 def render(st, *keys, label="📖 Plain-English glossary"):
-    """Drop an expander defining just the requested terms (in the order given)."""
-    with st.expander(label):
-        for k in keys:
-            if k in TERMS:
-                st.markdown("- " + TERMS[k])
+    """Render the requested terms (in the order given) inline at the top of a page.
+
+    Shown directly on the page, not tucked behind a click — define the jargon
+    before the reader hits it.
+    """
+    lines = [f"- {TERMS[k]}" for k in keys if k in TERMS]
+    if lines:
+        st.markdown(f"**{label}**\n\n" + "\n".join(lines))
