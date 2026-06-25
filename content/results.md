@@ -9,7 +9,7 @@
 AUC = how well the model ranks a random adopted dog above a random non-adopted one. 0.5 is a coin flip; 1.0 is perfect. These are the *actual* 5-seed ensembles serving predictions on this site.
 
 @ladder_caption
-The deployed model is a touch below the research ceiling — it trades a little AUC for a small, self-contained set of features that work on any shelter's data. Honesty over leaderboard.
+The deployed model is a touch below the research ceiling — it trades a little AUC for a small, self-contained set of features that work on any shelter's data — we'd rather be honest than chase a leaderboard score.
 
 @why_photo_model
 **Why *this* photo model.** The deployed photo+data model is **domain-invariant**: its ConvNeXt trunk was trained on **both** PetFinder and Taiwan shelter photos, so it learns to read the *dog* rather than the photographer's style. That makes it the **sharper ranker** (AUC ~0.72) with more sensible per-photo reads — which is why we deploy it. The trade is a little **calibration**: its probabilities run slightly looser (ECE ~0.05 vs ~0.02 for a PetFinder-only model — predicted ≈ actual within ~5 points instead of ~2). We judged the better image handling worth the looser probabilities.

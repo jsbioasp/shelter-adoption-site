@@ -169,7 +169,7 @@ def render():
     c = content.load("models")
     st.title("Try the Models")
     st.markdown(c["intro"])
-    glossary.render(st, "mlp", "cnn", "multitask", "strata")
+    glossary.render(st, "auc", "mlp", "cnn", "multitask", "strata")
 
     tab_data, tab_image, tab_both, tab_reshoot = st.tabs(
         ["📋 Data only", "📷 Image only", "📋📷 Data + image", "📸 Re-shoot (experimental)"]

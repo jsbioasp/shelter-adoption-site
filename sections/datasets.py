@@ -55,7 +55,7 @@ def render():
     st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
     st.success(c["photo_count"])
 
-    glossary.render(st, "auc", "rank_agreement")
+    glossary.render(st, "auc", "rank_agreement", "cnn")
 
     st.markdown("## Notable failures (the honest part)")
     st.warning(c["photo_transfer"])

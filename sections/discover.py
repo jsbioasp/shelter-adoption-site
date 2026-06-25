@@ -104,6 +104,8 @@ def _details_dialog(row, scores, n_test):
             "- *Photo unavailable, so the photo-based reads can't be computed for this dog.*"
         )
 
+    st.caption(content.load("discover")["model_honesty"])
+
     st.markdown("#### Contact the shelter")
     addr = _clean(row["shelter_address"])
     tel = _clean(row["shelter_tel"])
@@ -250,6 +252,7 @@ def render():
         shown = view[view["animal_id"].astype(str).isin(ids)]
 
     st.markdown(c["results_intro"].format(n_view=len(view), lo=lo, hi=hi, n_shown=len(shown)))
+    st.caption(c["model_honesty"])
 
     rows = [row for _, row in shown.iterrows()]
     with st.spinner(f"Downloading + scoring {len(rows)} photos…"):

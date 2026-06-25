@@ -10,7 +10,7 @@ Shelters triage hundreds of animals with limited staff. A model that flags which
 
 @efficiency
 ### Efficiency & effectiveness
-The same prediction that ranks a dog also explains *why*. The clearest lever we found isn't a fancy model — it's an uncaged listing photo, which helps the large group of young, mixed-breed dogs the most. (Young purebred puppies already adopt fastest.) Small changes, measurable lift.
+The same prediction that ranks a dog also explains *why*. The clearest lever we found isn't a fancy model — it's an uncaged listing photo, which helps the large group of young, mixed-breed dogs the most. (Young purebred puppies already adopt fastest.) Small changes produce measurable lift.
 
 @social
 ### Social impact

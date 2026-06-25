@@ -177,7 +177,7 @@ def _seed_probs_multitask(ens: dict, X_img: np.ndarray, X_tab: np.ndarray) -> np
 # Confidence = the calibrated probability's distance from the 0.5 decision boundary,
 # mapped to the confidence-threshold table (how accurate the model is among dogs it's
 # this sure about). Meaningful ONLY because the data_image model is calibrated
-# (ECE ~0.02) — see the Results page / compute_calibration.py.
+# (ECE ~0.05) — see the Results page / compute_calibration.py.
 def confidence_from_prob(p: float, model: str = "data_image") -> dict:
     """Map a calibrated probability to a confidence read.
 
