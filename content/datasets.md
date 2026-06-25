@@ -51,25 +51,7 @@ Scope: this is the validated set — the 7 shelters with a published government 
 
 **The 0.927 comes from the cross-dataset model — and this is where Austin earns its place.** Train *one* model with a **shared trunk** and a **separate head per dataset** on PetFinder **and** Austin together, and the shared trunk is forced to learn demographic patterns common to *both* countries. That cross-trained model ranks Taiwan's shelters at **0.927** — versus **0.778** for a model trained on PetFinder alone. The second dataset is what makes the ranking travel.
 
-Note: this ranking uses **tabular features only** — photos are deliberately left *out* of the Taiwan ranking, because (see the failures below) photo style doesn't cross borders. Demographics do.
-
-@photos_win
-**Photos add real signal.** Adding CNN photo features lifts adoption AUC by **{lift}** over the tabular baseline. *From our experiments.*
-
-@one_lever
-**One lever beats a fancy model.** Within young mixed-breed dogs, caged photos are associated with **{caged}** in 30-day adoption. *From our experiments.*
-
-@photo_count
-**A few photos beat none — or too many.** Adoption is non-monotonic in photo count: it peaks at **4–6 photos (~49%)**, versus **~30%** for *no* photo and **~38%** for *16+*. A small, focused set wins; piling on a dozen photos drops back toward the no-photo range. *(Verified on the 8,132-dog PetFinder set; PhotoAmt is a listing lever, not a deployed-model feature.)*
-
-@photo_transfer
-**Photo features don't transfer cleanly.** The CNN trained on Malaysian listings scored Taipei City's institutional photos *lowest* — even though Taipei has Taiwan's highest published adoption rate. Photo content is location-specific.
-
-@photo_transfer_deep
-**The deeper story — and a lesson in when *not* to ship the fancy model.** *Why* do the photos transfer worse? The CNN reads photo **style**, not the dog: it learned "polished marketplace photo → adopts, institutional shelter photo → doesn't" on the Malaysian listings, and Taiwan's shelters are *all* institutional. We tried a fix — train the photo trunk to read the same dog attributes from **both** countries' photos (domain-invariant training). Tested honestly on *new dogs at the known shelters*, it **does** transfer (rank correlation **+0.53**) — a real result, not an artifact. **But it doesn't beat the simple data-only model (+0.59)**, it's noisier, and on *brand-new* shelters it inverts. So for the **cross-shelter ranking** (which shelters need support most), this site uses the **data-only** model — the photo fix only *matches* it there, and the simpler, steadier model wins. *(The domain-invariant model **is** deployed for **per-dog** photo reads, where its sharper image handling earns its keep — see Try the Models.)* *M06-MULTITASK-FINDINGS.md, domain-invariant trunk addendum (held-out tests).*
-
-@tabular_ceiling
-**Tabular data hits a ceiling fast.** Demographics alone cap out around **{ceiling}**. No amount of model tuning broke past it — the information just isn't in the columns.
+Note: this ranking uses **tabular features only** — photos are deliberately left *out* of the Taiwan ranking, because photo style doesn't cross borders (the photo-transfer findings are on the Results page). Demographics do.
 
 @taiwan_not_loaded
 Taiwan snapshot not loaded yet — the Discover Dogs page explains the scheduled refresh.

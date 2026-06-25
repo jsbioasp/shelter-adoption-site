@@ -47,8 +47,16 @@ def render():
     st.table(ladder)
     st.caption(c["ladder_caption"])
 
+    st.markdown("## What we found")
+    st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
+    st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
+    st.success(c["photo_count"])
+    st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
+
     st.markdown("## Why this photo model")
     st.markdown(c["why_photo_model"])
+    st.warning(c["photo_transfer"])
+    st.info(c["photo_transfer_deep"])
 
     _render_calibration(c)
 
