@@ -67,12 +67,12 @@ def _show_result(p: float, stratum: str | None = None, model: str = "data_image"
 
 
 _FEATURE_LABELS = {
-    "age_adult": "age_adult — age ≥ 12 months",
-    "is_young": "is_young — age < 6 months",
-    "is_mixed_breed": "is_mixed_breed",
-    "gender_male": "gender_male",
-    "gender_female": "gender_female",
-    "sterilized_yes": "sterilized_yes",
+    "age_adult": "Adult — age ≥ 12 months (age_adult)",
+    "is_young": "Puppy — age < 6 months (is_young)",
+    "is_mixed_breed": "Mixed-breed (is_mixed_breed)",
+    "gender_male": "Male (gender_male)",
+    "gender_female": "Female (gender_female)",
+    "sterilized_yes": "Spayed / neutered (sterilized_yes)",
 }
 
 
@@ -152,6 +152,7 @@ def _reshoot_tab(c):
     if hits.empty:
         st.info("No close matches in the curated pool — try a looser match strictness.")
         return
+    st.caption(c["reshoot_quality_note"])
     cols = st.columns(3)
     for i, (_, r) in enumerate(hits.iterrows()):
         with cols[i % 3]:

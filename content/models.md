@@ -34,3 +34,6 @@ This is *your* dog's score (photo + demographics). The examples below are **diff
 
 @reshoot_honesty_caption
 The pace score is *model output*, validated against PetFinder adoption speed (not Taiwan). Photo quality ≠ adoptability: well-photographed dogs don't all adopt fast. Use to coach listings, not to rank animals.
+
+@reshoot_quality_note
+Each card's **photo-quality** score (0–1) is how well the photo hits four composition traits — dog near and filling the frame, face visible, clean background, well-lit — read by a vision model. It rates the *photo*, not the dog.
