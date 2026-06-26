@@ -48,12 +48,15 @@ def render():
     st.caption(c["ladder_caption"])
 
     st.markdown("## What we found")
-    st.success(c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]))
-    st.success(c["one_lever"].format(caged=f["caged_rate_gap"]["value"]))
-    st.info(c["older_dog_signal"])
-    st.success(c["photo_count"])
-    st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
-    st.warning(c["sentiment_null"])
+    _findings = [
+        c["photos_win"].format(lift=f["m06_multitask_lift"]["value"]),
+        c["one_lever"].format(caged=f["caged_rate_gap"]["value"]),
+        c["older_dog_signal"],
+        c["photo_count"],
+        c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]),
+        c["sentiment_null"],
+    ]
+    st.markdown("\n".join(f"- {item}" for item in _findings))
     st.markdown("#### Where does the signal come from?")
     st.markdown(c["signal_mechanism"])
 
