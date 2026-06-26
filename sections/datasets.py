@@ -40,10 +40,10 @@ def render():
     cc1.markdown(c["challenge_petfinder"])
     cc2.markdown(c["challenge_taiwan"])
     cc3.markdown(c["challenge_austin"])
-    st.info(c["bias_note"])
+    st.markdown(c["bias_note"])
 
     st.markdown("## Rankings transfer across countries")
-    st.success(c["rankings_success"].format(n_shelters=r["n_shelters"], spearman=r["spearman"]))
+    st.markdown(c["rankings_success"].format(n_shelters=r["n_shelters"], spearman=r["spearman"]))
     st.table(pd.DataFrame(r["rows"]).set_index("Our rank"))
     st.caption(c["ranking_caption"].format(source=r["source"]))
     st.caption(c["ranking_scope"])
@@ -61,4 +61,4 @@ def render():
         st.markdown("**Adoptable dogs by shelter (top 12)**")
         st.bar_chart(by_shelter)
     else:
-        st.info(c["taiwan_not_loaded"])
+        st.markdown(c["taiwan_not_loaded"])
