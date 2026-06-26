@@ -34,7 +34,7 @@ def render():
 
     glossary.render(st, "auc", "rank_agreement", "cnn")
 
-    st.markdown("## What each dataset is good for — and where it falls short")
+    st.markdown("## What the datasets' purposes are, and their strengths and weaknesses")
     st.markdown(c["challenges_intro"])
     cc1, cc2, cc3 = st.columns(3)
     cc1.markdown(c["challenge_petfinder"])

@@ -19,12 +19,12 @@ Each of the three is suited to a different job, and each has real flaws — a di
 @challenge_petfinder
 **PetFinder — the 30-day cutoff is arbitrary.**
 
-The label is *adopted within 30 days*. Thirty days is a line someone picked: a dog adopted on day 31 counts the same as one never adopted. So the target is really *faster vs slower than typical*, not *adopted vs not* — and the ceiling on accuracy is the fuzziness of that line, not the model.
+The label is *adopted within 30 days*. Thirty days is a line someone picked — a dog adopted on day 31 counts the same as one never adopted — but it happens to fall near the average: roughly 50% of the dataset lands on either side of the threshold. So "within 30 days" really means *faster vs slower than a typical dog*, not *adopted vs not* — and the ceiling on accuracy is the fuzziness of that line, not the model.
 
 @challenge_taiwan
-**Taiwan — no outcomes, and only the dogs still waiting.**
+**Taiwan — no outcomes, and an active roster.**
 
-The feed is *current stock*: a dog disappears the moment it's adopted, so we never see an adopted Taiwan dog — only the ones still waiting, who skew harder to adopt (older, bigger, fewer photos). With no outcome labels at all, we can only infer whether the model holds up by comparing against PetFinder. The fields are coarse, too: age is just CHILD or ADULT, with no stated line between them; color is free text; and there's often a single photo per dog.
+Adopted dogs are removed from the dataset the moment they're placed, so we never see a Taiwan adoption — only the dogs still listed, who skew harder to adopt (older, bigger, fewer photos). We have no way of knowing the actual adoption trends except by inferring them from PetFinder. The fields are coarse, too: age is just CHILD or ADULT, with no stated line between them; color is free text; and there's often a single photo per dog.
 
 @challenge_austin
 **Austin — outcomes, but no photos or text.**
