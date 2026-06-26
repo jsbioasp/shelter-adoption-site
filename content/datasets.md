@@ -13,9 +13,6 @@
 ### Taiwan MOA shelters
 Thousands of currently-adoptable dogs from Taiwan's public open-data feed — **live, but no outcome labels**. Where we *deploy and test transfer*. *Does what we learned travel to Taiwan?*
 
-@why_dogs
-Dogs are the larger, more balanced population in both datasets, and shelter listings are where a prediction can actually change an outcome. Cats and other species were out of scope to keep the comparison clean.
-
 @challenges_intro
 Honest modeling starts with knowing what's *wrong* with your data. Each of the three has a different fundamental limitation — and those limitations shape every result below.
 

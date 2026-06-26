@@ -32,9 +32,6 @@ def render():
     col2.markdown(c["austin"])
     col3.markdown(c["taiwan"])
 
-    st.markdown("### Why dogs, why shelters")
-    st.markdown(c["why_dogs"])
-
     glossary.render(st, "auc", "rank_agreement", "cnn")
 
     st.markdown("## The catch: every dataset is broken in its own way")
