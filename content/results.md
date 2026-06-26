@@ -32,7 +32,7 @@ Because the photo+data model is calibrated, you can **act only on dogs it's sure
 This is the confidence lever a shelter actually uses: triage aggressively on the high-confidence dogs, give the uncertain ones a human look.
 
 @why_multitask
-**Why a *multi-task* model?** In the experiments, a naive flat concatenation of photo + tabular features was badly overconfident (ECE ≈ 0.20 — it claimed 90% on dogs that adopted ~70% of the time). The multi-task model this site deploys keeps the photo signal in a separate trunk and stays calibrated (ECE ≈ {ece:.2f}). Calibration, not just AUC, is why we chose it.
+**Why a *multi-task* model?** The simplest way to combine a photo with the demographic facts — gluing all the numbers together — made the model badly overconfident: it claimed 90% sure on dogs that actually adopted ~70% of the time. The multi-task model we deploy keeps the photo and the facts in their own lanes, so its confidence stays honest (ECE ≈ {ece:.2f}). A score you can trust matters as much as a sharp one — that's why we chose it.
 
 @photos_win
 **Photos add real signal.** Adding CNN photo features lifts adoption AUC by **{lift}** over the tabular baseline. *From our experiments.*
