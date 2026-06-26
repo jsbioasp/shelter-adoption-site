@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 PAGES = [
-    st.Page(motivation.render, title="Motivation", url_path="motivation", default=True),
+    st.Page(motivation.render, title="Introduction and Motivations", url_path="motivation", default=True),
     st.Page(datasets.render, title="Datasets & Experiments", url_path="datasets"),
     st.Page(results.render, title="Results", url_path="results"),
     st.Page(models_ui.render, title="Try the Models", url_path="models"),

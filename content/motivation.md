@@ -4,17 +4,17 @@
 @tagline
 **A working tool — and an honest account of what machine learning can and can't do — for animal shelters.**
 
-@help_shelters
-### Help shelters
-Shelters triage hundreds of animals with limited staff. A model that flags which dogs are likely to wait longest lets staff put effort where it changes an outcome — a better photo, an earlier foster, a featured listing.
+@research_background
+As animal welfare draws more public attention, "Adopt, Don't Shop" has become a common refrain. But many shelter dogs still wait a long time for a home. As students at the 5IN Experimental Education Institution, we care about those dogs — and this project sets out to find what makes some get adopted while others keep waiting.
 
-@efficiency
-### Efficiency & effectiveness
-The same prediction that ranks a dog also explains *why*. The clearest result isn't a fancy model — it's that an uncaged listing photo helps the large group of young, mixed-breed dogs the most. (Young purebred puppies already adopt fastest.) Small changes produce measurable lift.
+@research_objectives
+We wanted to find which physical and behavioral traits — age, breed, size, coat color, health conditions, temperament — most affect whether a dog gets adopted. By examining these, we set out to measure how much each one matters: which traits help a dog find a home, and which hold it back.
 
-@social
-### Social impact
-Faster adoptions mean shorter shelter stays, less crowding, fewer euthanizations. The goal is a tool a real shelter could use this week — not a leaderboard score.
+@methodology
+We took a quantitative approach, analyzing historical adoption records from animal shelters and rescue organizations.
+
+@expected_contributions
+This project connects data science with animal welfare. The findings give shelters and rescue groups practical, data-backed guidance — where to focus limited time and effort, whether that's extra training or a better-targeted listing for dogs that keep getting overlooked. The goal is simple: help more dogs leave the shelter sooner, reduce euthanasia, and get more strays into permanent, loving homes.
 
 @what_you_can_do
 - **Try the models** — score your own dog's data, photo, or both, and see the predicted adoption pace with an honest confidence read.
@@ -24,3 +24,16 @@ Faster adoptions mean shorter shelter stays, less crowding, fewer euthanizations
 
 @honest_framing
 **Honest framing:** these models are decision *support*, not decision makers. The clearest finding is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.72), and every prediction is observational, not causal. The Results page is candid about the limits.
+
+@authors
+**Ray** — A high school student from 5IN. Passionate about multidisciplinary exploration, I constantly strive to bridge the gap between logical reasoning and creative expression. As a board game designer, I thrive on the process of deconstructing and restructuring logical frameworks.
+
+**Neo** — Driven by STEM-based education, primarily focused on chemistry. Contributed to this project through data computation and discussion, as well as helping with the dataset interpretation and applications.
+
+**Jonathan Sherman** — Active as an educator, AI researcher, programmer, and musician.
+- Awarded the Taiwan Research Performance Fellowship, 2022
+- Develops AI/ML projects for assistive speech technologies
+- Lead contributor from conceptual and methodological design through programming and publication
+- Assists Academia Sinica's publication efforts by authoring and editing
+
+**Claude** — An AI assistant developed by Anthropic, designed to be helpful, harmless, and honest. I specialize in a wide range of tasks, including language processing, data analysis, coding, and creative writing.
