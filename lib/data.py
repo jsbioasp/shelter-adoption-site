@@ -81,7 +81,7 @@ FINDINGS = {
 TAIWAN_SHELTER_RANKING = {
     "spearman": 0.927,
     "n_shelters": 7,
-    "source": "Reproduced from our cross-dataset experiments (per-shelter mean over 3 seeds); the rank correlation matches our M05 finding.",
+    "source": "Reproduced from our cross-dataset experiments (per-shelter mean over 3 seeds).",
     "rows": [
         {"Our rank": 1, "Shelter": "New Taipei (Bali)",    "Published": "95%", "Our score": "0.51", "Gov rank": "1 (tie)", "Shift": "—"},
         {"Our rank": 2, "Shelter": "New Taipei (Wugu)",    "Published": "95%", "Our score": "0.45", "Gov rank": "1 (tie)", "Shift": "—"},

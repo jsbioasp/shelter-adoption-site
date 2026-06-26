@@ -41,7 +41,7 @@ Tens of thousands of resolved outcomes, but only demographics — no photos, no 
 Government rank is by published adoption rate; the three New Taipei shelters share the same 95% rate (a 3-way tie for #1). Our model puts them in its top 3 and pins the lowest-rate shelters at the bottom — the only disagreement is one adjacent swap, Kaohsiung edging out Taipei City, and that single inversion is the whole gap from a perfect 1.0. {source}
 
 @ranking_scope
-Scope: this is the validated set — the 7 shelters with a published government rate. Counted across every shelter that maps to a rated city, the agreement weakens (the model can't tell apart shelters within the same city), so the claim stays scoped to these 7.
+Scope: this is the validated set — the 7 shelters with a published government rate, and the larger ones where the rate is stable. Across every shelter that maps to a rated city the agreement weakens, for two reasons: the model can't tell apart shelters within the same city, and smaller shelters handle so few dogs that their adoption rate swings widely on chance alone. So the claim stays scoped to these 7, where the numbers are big enough to be reliable.
 
 @ranking_how
 **Spearman rank correlation** asks one question: if you rank Taiwan's shelters by the model's *average predicted adoption*, do they come out in the **same order** as their real published rates? **+1** = identical order, **0** = unrelated, **−1** = exactly backwards. The model never sees a single Taiwan outcome — it only ranks.
