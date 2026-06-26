@@ -61,6 +61,27 @@ UI: dict[str, dict[str, str]] = {
     "dg_age_head": {"en": "Age head", "zh": "年齡輸出頭"},
     "dg_q_adopt": {"en": "Will it be adopted?\\n(main goal)", "zh": "會被領養嗎？\\n（主要目標）"},
     "dg_q_age": {"en": "Is it young?\\n(side goal)", "zh": "是幼犬嗎？\\n（次要目標）"},
+
+    # ---- Datasets & Experiments ----
+    "ds_h_three_datasets": {"en": "Three datasets, three jobs", "zh": "三個資料集，三種任務"},
+    "ds_h_purposes": {"en": "What the datasets' purposes are, and their strengths and weaknesses",
+                      "zh": "這些資料集的用途，以及它們的優勢與弱點"},
+    "ds_h_rankings": {"en": "Rankings transfer across countries", "zh": "排名能跨國遷移"},
+    "ds_h_how_measure": {"en": "How we measure transfer — and which model earns the 0.927",
+                         "zh": "我們如何衡量遷移——以及是哪個模型達成 0.927"},
+    "ds_h_live_data": {"en": "The live Taiwan data, right now", "zh": "此刻的台灣即時資料"},
+    "ds_m_adoptable": {"en": "Adoptable dogs", "zh": "可領養的狗"},
+    "ds_m_shelters": {"en": "Shelters", "zh": "收容所數"},
+    "ds_m_mixed_share": {"en": "Mixed-breed share", "zh": "米克斯比例"},
+    "ds_by_shelter": {"en": "Adoptable dogs by shelter (top 12)", "zh": "各收容所可領養的狗（前 12 名）"},
+    "ds_ranking_source": {"en": "Reproduced from our cross-dataset experiments (per-shelter mean over 3 seeds).",
+                          "zh": "由我們的跨資料集實驗重現（每間收容所取 3 個隨機種子的平均）。"},
+    "col_our_rank": {"en": "Our rank", "zh": "我們的排名"},
+    "col_shelter": {"en": "Shelter", "zh": "收容所"},
+    "col_published": {"en": "Published", "zh": "公布領養率"},
+    "col_our_score": {"en": "Our score", "zh": "我們的分數"},
+    "col_gov_rank": {"en": "Gov rank", "zh": "政府排名"},
+    "col_shift": {"en": "Shift", "zh": "變動"},
 }
 
 
