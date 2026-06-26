@@ -27,7 +27,5 @@ def render():
     st.markdown("## What you can do here")
     st.markdown(c["what_you_can_do"])
 
-    st.info(c["honest_framing"])
-
     st.markdown("## Authors")
     st.markdown(c["authors"])

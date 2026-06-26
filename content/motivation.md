@@ -22,9 +22,6 @@ This project connects data science with animal welfare. The findings give shelte
 - **See the results** — the best models, what they get right, and where they break down.
 - **Read the experiments** — why PetFinder and Taiwan, and the successes and failures behind the numbers.
 
-@honest_framing
-**Honest framing:** these models are decision *support*, not decision makers. The clearest finding is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.72), and every prediction is observational, not causal. The Results page is candid about the limits.
-
 @authors
 **Ray** — A high school student from 5IN. Passionate about multidisciplinary exploration, I constantly strive to bridge the gap between logical reasoning and creative expression. As a board game designer, I thrive on the process of deconstructing and restructuring logical frameworks.
 
