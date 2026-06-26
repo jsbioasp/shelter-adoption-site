@@ -54,8 +54,8 @@ def render():
     st.success(c["photo_count"])
     st.warning(c["tabular_ceiling"].format(ceiling=f["m05_accuracy_ceiling"]["value"]))
     st.warning(c["sentiment_null"])
-    with st.expander("Where does the signal come from?"):
-        st.markdown(c["signal_mechanism"])
+    st.markdown("#### Where does the signal come from?")
+    st.markdown(c["signal_mechanism"])
 
     st.markdown("## Why this photo model")
     st.markdown(c["why_photo_model"])

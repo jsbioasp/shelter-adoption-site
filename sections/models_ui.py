@@ -83,12 +83,12 @@ def _show_features(s6):
     becomes two (adult? and young?) and the sex answer becomes two (male? and
     female?). Showing the vector makes that 4 → 6 expansion explicit.
     """
-    with st.expander("What the model actually sees — 6 features from your 4 answers"):
-        st.caption("Your **age** answer becomes two features (`age_adult` and `is_young`) and "
-                   "your **sex** answer becomes two (`gender_male`, `gender_female`). With "
-                   "`is_mixed_breed` and `sterilized_yes`, that's the SHARED_6 vector.")
-        st.table([{"feature": _FEATURE_LABELS[name], "value": int(val)}
-                  for name, val in zip(models.SHARED6_FEATURES, s6)])
+    st.markdown("#### What the model actually sees — 6 features from your 4 answers")
+    st.caption("Your **age** answer becomes two features (`age_adult` and `is_young`) and "
+               "your **sex** answer becomes two (`gender_male`, `gender_female`). With "
+               "`is_mixed_breed` and `sterilized_yes`, that's the SHARED_6 vector.")
+    st.table([{"feature": _FEATURE_LABELS[name], "value": int(val)}
+              for name, val in zip(models.SHARED6_FEATURES, s6)])
 
 
 # ---------------- Re-shoot: real same-profile dogs with strong photos ----------------

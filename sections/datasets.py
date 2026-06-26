@@ -50,8 +50,8 @@ def render():
     st.table(pd.DataFrame(r["rows"]).set_index("Our rank"))
     st.caption(c["ranking_caption"].format(source=r["source"]))
     st.caption(c["ranking_scope"])
-    with st.expander("How we measure transfer — and which model earns the 0.927"):
-        st.markdown(c["ranking_how"])
+    st.markdown("#### How we measure transfer — and which model earns the 0.927")
+    st.markdown(c["ranking_how"])
 
     summary = _taiwan_summary()
     if summary is not None:
