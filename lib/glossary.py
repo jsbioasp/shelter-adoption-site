@@ -15,6 +15,9 @@ TERMS = {
     "calibration": "**Calibration** — whether a score means what it says: if the model says 70%, "
            "do about 70% of those dogs actually get adopted? A calibrated score can be read as a "
            "real probability.",
+    "ece": "**ECE (expected calibration error)** — how far a score's confidence sits from reality, "
+           "on average. If the model says 70% but those dogs adopt 65% of the time, ECE sums up that "
+           "5-point gap. Lower is better; ~0.05 means predictions land within about 5 points.",
     "mlp": "**MLP (multi-layer perceptron)** — a small neural network. Ours reads a dog's "
            "demographic facts (age, sex, breed, sterilization) and outputs an adoption-pace score.",
     "cnn": "**CNN (convolutional neural network)** — a network that reads images. Ours turns a "
@@ -27,6 +30,9 @@ TERMS = {
     "strata": "**Strata** — the four demographic groups we compare within: young vs adult × "
            "purebred vs mixed-breed. Measuring an effect inside one group keeps the comparison "
            "like-for-like.",
+    "pp": "**pp (percentage points)** — the plain gap between two percentages. From a 30% adoption "
+          "rate to 47% is a rise of 17 points (17pp); we say 'points' so it isn't confused with a "
+          "'percent increase'.",
 }
 
 

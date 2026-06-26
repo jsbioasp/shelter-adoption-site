@@ -20,16 +20,16 @@ def render():
     st.title("Results")
 
     st.info(c["score_meaning"])
-    glossary.render(st, "auc", "rank_agreement", "calibration", "mlp", "cnn", "multitask")
+    glossary.render(st, "auc", "calibration", "ece", "cnn", "multitask", "pp")
 
     st.markdown("## The models running on this site")
     aucs = _live_aucs()
     c1, c2 = st.columns(2)
     c1.metric("Data-only model (AUC)", f"{aucs['tabular_only']:.3f}",
-              help="Tabular FlatMLP ensemble on 6 demographic features.")
+              help="The data-only model: the six demographic facts, no photo.")
     c2.metric("Photo + data model (AUC)", f"{aucs['multitask']:.3f}",
-              help="Domain-invariant multi-task model: ConvNeXt photo trunk trained on "
-                   "PetFinder + Taiwan photos, + adopt head.")
+              help="The deployed photo + data model: reads the dog from the photo "
+                   "plus the six demographic facts.")
     st.caption(c["auc_caption"])
 
     st.markdown("## The research ladder (best configurations)")
@@ -56,11 +56,6 @@ def render():
     st.warning(c["sentiment_null"])
     st.markdown("#### Where does the signal come from?")
     st.markdown(c["signal_mechanism"])
-
-    st.markdown("## Why this photo model")
-    st.markdown(c["why_photo_model"])
-    st.warning(c["photo_transfer"])
-    st.info(c["photo_transfer_deep"])
 
     _render_calibration(c)
 

@@ -35,7 +35,7 @@ The feed is *current stock only*: the moment a dog is adopted it **leaves**. So 
 Resolved adoption outcomes for tens of thousands of dogs — but **no photos and no descriptions**, just demographics. Perfect for learning what *transfers* across shelters (the shared trunk behind the 0.927), useless for anything a picture would tell you.
 
 @bias_note
-**The deployed photo model learned this bias.** Our photo+data model trains its trunk on PetFinder **and** Taiwan photos (domain-invariant), so it reads the *dog* not the photographer's style. But because Taiwan's roster is all hard-to-adopt leftovers, it also inherits a slightly pessimistic world-view — it tends to score Taiwan dogs **lower** than their demographics alone would suggest. The dataset's selection bias is baked right into the model's reads on the Discover Dogs page.
+**The deployed photo model learned this bias.** Our photo model is trained on **both** PetFinder and Taiwan photos, so it reads the *dog*, not the photographer's style. But because Taiwan's roster is all hard-to-adopt leftovers, it also inherits a slightly pessimistic world-view — it tends to score Taiwan dogs **lower** than their demographics alone would suggest. The dataset's selection bias is baked right into the model's reads on the Discover Dogs page.
 
 @rankings_success
 **Rankings transfer across countries.** Over the {n_shelters} shelters with published government adoption rates, our model's ranking matched the government's at **ρ = {spearman}** (1.0 would be identical order) — the *order* transfers even though the *absolute* rates don't.
@@ -51,7 +51,7 @@ Scope: this is the validated set — the 7 shelters with a published government 
 
 **The 0.927 comes from the cross-dataset model — and this is where Austin earns its place.** Train *one* model with a **shared trunk** and a **separate head per dataset** on PetFinder **and** Austin together, and the shared trunk is forced to learn demographic patterns common to *both* countries. That cross-trained model ranks Taiwan's shelters at **0.927** — versus **0.778** for a model trained on PetFinder alone. The second dataset is what makes the ranking travel.
 
-Note: this ranking uses **tabular features only** — photos are deliberately left *out* of the Taiwan ranking, because photo style doesn't cross borders (the photo-transfer findings are on the Results page). Demographics do.
+Note: this ranking uses **tabular features only** — photos are deliberately left *out* of the Taiwan ranking, because photo style doesn't cross borders. Demographics do.
 
 @taiwan_not_loaded
 Taiwan snapshot not loaded yet — the Discover Dogs page explains the scheduled refresh.

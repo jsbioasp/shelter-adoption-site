@@ -11,22 +11,19 @@ AUC = how well the model ranks a random adopted dog above a random non-adopted o
 @ladder_caption
 The deployed model is a touch below the research ceiling — it trades a little AUC for a small, self-contained set of features that work on any shelter's data — we'd rather be honest than chase a leaderboard score.
 
-@why_photo_model
-**Why *this* photo model.** The deployed photo+data model is **domain-invariant**: its ConvNeXt trunk was trained on **both** PetFinder and Taiwan shelter photos, so it learns to read the *dog* rather than the photographer's style. That makes it the **sharper ranker** (AUC ~0.72) with more sensible per-photo reads — which is why we deploy it. The trade is a little **calibration**: its probabilities run slightly looser (ECE ~0.05 vs ~0.02 for a PetFinder-only model — predicted ≈ actual within ~5 points instead of ~2). We judged the better image handling worth the looser probabilities.
-
 @confident_about
 - **Confident & right:** young dogs in uncaged listing photos — the model and the outcomes agree. (Young *purebred* puppies adopt fastest of all; the caged-photo lever helps the much larger young, mixed-breed group most.)
-- **Confident & wrong:** cross-shelter transfer. The photo model is confident on Taiwan institutional photos and confidently wrong — see the Datasets page.
+- **Confident & wrong:** photo scores don't carry over between shelter systems — the model can be confident on a new country's shelter photos and still be wrong.
 - **Honest uncertainty:** for adult purebreds the signal is thin; the model says so with probabilities near the base rate.
 
 @photo_preliminary
 Photo findings are preliminary. An uncaged listing photo is the clearest lever; other composition factors (framing, pose, focus) show smaller, less consistent effects. We're re-running the image experiments with newer findings and may revise these.
 
 @calibration_intro
-A score is only useful if it means what it says. **Calibration** asks: of the dogs the photo+data model rated ~50%, did ~50% actually get adopted? Measured on {n_test:,} held-out dogs, predicted tracks actual across the range — within a few points per bin (the deployed domain-invariant model runs a touch looser than a PetFinder-only one; see *Why this photo model*).
+A score is only useful if it means what it says. **Calibration** asks: of the dogs the photo+data model rated ~50%, did ~50% actually get adopted? Measured on {n_test:,} held-out dogs, predicted tracks actual across the range — within a few points per bin.
 
 @calibration_caption
-Expected Calibration Error (ECE) = **{ece:.3f}** — the average gap between predicted and actual is about **5 points** (the domain-invariant photo model trades a little calibration for sharper ranking — see *Why this photo model*). The photo-only view is looser still (ECE {image_ece:.3f}), which is why the site treats it as a diagnostic, not a probability.
+Expected Calibration Error (ECE) = **{ece:.3f}** — the average gap between predicted and actual is about **5 points**. The photo-only view is looser still (ECE {image_ece:.3f}), which is why the site treats it as a diagnostic, not a probability.
 
 @thresholds_intro
 Because the photo+data model is calibrated, you can **act only on dogs it's sure about**: predict above a threshold T (likely adopted) or below 1−T (likely not). Higher T covers fewer dogs but is more accurate on the ones you keep.
@@ -48,12 +45,6 @@ This is the confidence lever a shelter actually uses: triage aggressively on the
 
 @tabular_ceiling
 **Tabular data hits a ceiling fast.** Demographics alone cap out around **{ceiling}**. No amount of model tuning broke past it — the information just isn't in the columns.
-
-@photo_transfer
-**Photo features don't transfer cleanly.** The CNN trained on Malaysian listings scored Taipei City's institutional photos *lowest* — even though Taipei has Taiwan's highest published adoption rate. Photo content is location-specific.
-
-@photo_transfer_deep
-**The deeper story — and a lesson in when *not* to ship the fancy model.** *Why* do the photos transfer worse? The CNN reads photo **style**, not the dog: it learned "polished marketplace photo → adopts, institutional shelter photo → doesn't" on the Malaysian listings, and Taiwan's shelters are *all* institutional. We tried a fix — train the photo trunk to read the same dog attributes from **both** countries' photos (domain-invariant training). Tested honestly on *new dogs at the known shelters*, it **does** transfer (rank correlation **+0.53**) — a real result, not an artifact. **But it doesn't beat the simple data-only model (+0.59)**, it's noisier, and on *brand-new* shelters it inverts. So for the **cross-shelter ranking** (which shelters need support most), this site uses the **data-only** model — the photo fix only *matches* it there, and the simpler, steadier model wins. *(The domain-invariant model **is** deployed for **per-dog** photo reads, where its sharper image handling earns its keep — see Try the Models.)* *M06-MULTITASK-FINDINGS.md, domain-invariant trunk addendum (held-out tests).*
 
 @older_dog_signal
 **Older dogs need a different lever.** Puppies sell themselves; for **adult purebreds** the editable photo lever is **framing** — wide, full-body shots beat tight face close-ups (+7.7pp adoption). But most of an adult dog's signal is *intrinsic* — who the dog is, not how it's shot — so for older dogs the tool's job is to **surface** the ones who need help, not restyle them.
