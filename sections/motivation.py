@@ -1,31 +1,33 @@
-"""Landing / Motivation section. Owner: <student>.
+"""Landing / Introduction section. Owner: <student>.
 
-Layout + logic only. The words live in content/motivation.md — edit them there.
+Layout + logic only. The words live in content/<lang>/motivation.md; the section
+headers come from lib.i18n so they translate with the rest of the chrome.
 """
 import streamlit as st
 
 from lib import content
+from lib.i18n import t
 
 
 def render():
     c = content.load("motivation")
-    st.title("Shelter Adoption ML")
+    st.title(t("site_title"))
     st.markdown(c["tagline"])
 
-    st.markdown("## Research background and motivation")
+    st.markdown("## " + t("h_research_background"))
     st.markdown(c["research_background"])
 
-    st.markdown("## Research objectives")
+    st.markdown("## " + t("h_research_objectives"))
     st.markdown(c["research_objectives"])
 
-    st.markdown("## Methodology and implementation")
+    st.markdown("## " + t("h_methodology"))
     st.markdown(c["methodology"])
 
-    st.markdown("## Expected contributions")
+    st.markdown("## " + t("h_expected_contributions"))
     st.markdown(c["expected_contributions"])
 
-    st.markdown("## What you can do here")
+    st.markdown("## " + t("h_what_you_can_do"))
     st.markdown(c["what_you_can_do"])
 
-    st.markdown("## Authors")
+    st.markdown("## " + t("h_authors"))
     st.markdown(c["authors"])
