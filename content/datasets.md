@@ -14,25 +14,25 @@
 Thousands of currently-adoptable dogs from Taiwan's public open-data feed — **live, but no outcome labels**. Where we *deploy and test transfer*. *Does what we learned travel to Taiwan?*
 
 @challenges_intro
-Honest modeling starts with knowing what's *wrong* with your data. Each of the three has a different fundamental limitation — and those limitations shape every result below.
+Each of the three is suited to a different job, and each has real flaws — a different one in each case. Knowing those strengths and limits is what keeps the results below honest.
 
 @challenge_petfinder
-**PetFinder — an arbitrary finish line.**
+**PetFinder — the 30-day cutoff is arbitrary.**
 
-The label is *adopted within 30 days*. But 30 days is a cutoff someone chose; a dog adopted on day 31 looks identical to one never adopted. The target really splits dogs into "faster vs slower than typical" more than "adopted vs not" — so the ceiling isn't the model, it's the fuzziness of the line itself.
+The label is *adopted within 30 days*. Thirty days is a line someone picked: a dog adopted on day 31 counts the same as one never adopted. So the target is really *faster vs slower than typical*, not *adopted vs not* — and the ceiling on accuracy is the fuzziness of that line, not the model.
 
 @challenge_taiwan
-**Taiwan — no outcomes, and a biased roster.**
+**Taiwan — no outcomes, and only the dogs still waiting.**
 
-The feed is *current stock only*: the moment a dog is adopted it **leaves**. So we literally never see an adopted Taiwan dog — only the ones still waiting, who skew **hard-to-adopt** (older, bigger, fewer photos). With no labels at all, we can only *infer* transfer via the statistical gap with PetFinder. And the fields are coarse: age is just CHILD/ADULT (no senior), color is free-text, often one photo per dog.
+The feed is *current stock*: a dog disappears the moment it's adopted, so we never see an adopted Taiwan dog — only the ones still waiting, who skew harder to adopt (older, bigger, fewer photos). With no outcome labels at all, we can only infer whether the model holds up by comparing against PetFinder. The fields are coarse, too: age is just CHILD or ADULT, with no stated line between them; color is free text; and there's often a single photo per dog.
 
 @challenge_austin
-**Austin — outcomes, but blind.**
+**Austin — outcomes, but no photos or text.**
 
-Resolved adoption outcomes for tens of thousands of dogs — but **no photos and no descriptions**, just demographics. Perfect for learning what *transfers* across shelters (the shared trunk behind the 0.927), useless for anything a picture would tell you.
+Tens of thousands of resolved outcomes, but only demographics — no photos, no descriptions. That makes it good for learning what holds up across shelters (the cross-dataset model behind the 0.927), and no help for anything a picture would tell you.
 
 @bias_note
-**The deployed photo model learned this bias.** Our photo model is trained on **both** PetFinder and Taiwan photos, so it reads the *dog*, not the photographer's style. But because Taiwan's roster is all hard-to-adopt leftovers, it also inherits a slightly pessimistic world-view — it tends to score Taiwan dogs **lower** than their demographics alone would suggest. The dataset's selection bias is baked right into the model's reads on the Discover Dogs page.
+**The deployed photo model picked up this skew.** Our photo model is trained on **both** PetFinder and Taiwan photos, so it reads the *dog*, not the photographer's style. But because the Taiwan dogs it learned from are all ones still waiting (harder to adopt), it leans low on Taiwan — it tends to score Taiwan dogs **lower** than their demographics alone would suggest. That selection bias shows up directly in the model's reads on the Discover Dogs page.
 
 @rankings_success
 **Rankings transfer across countries.** Over the {n_shelters} shelters with published government adoption rates, our model's ranking matched the government's at **ρ = {spearman}** (1.0 would be identical order) — the *order* transfers even though the *absolute* rates don't.

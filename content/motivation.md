@@ -10,7 +10,7 @@ Shelters triage hundreds of animals with limited staff. A model that flags which
 
 @efficiency
 ### Efficiency & effectiveness
-The same prediction that ranks a dog also explains *why*. The clearest lever we found isn't a fancy model — it's an uncaged listing photo, which helps the large group of young, mixed-breed dogs the most. (Young purebred puppies already adopt fastest.) Small changes produce measurable lift.
+The same prediction that ranks a dog also explains *why*. The clearest result isn't a fancy model — it's that an uncaged listing photo helps the large group of young, mixed-breed dogs the most. (Young purebred puppies already adopt fastest.) Small changes produce measurable lift.
 
 @social
 ### Social impact
@@ -23,4 +23,4 @@ Faster adoptions mean shorter shelter stays, less crowding, fewer euthanizations
 - **Read the experiments** — why PetFinder and Taiwan, and the successes and failures behind the numbers.
 
 @honest_framing
-**Honest framing:** these models are decision *support*, not decision makers. The clearest lever is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.72), and every prediction is observational, not causal. The Results page is candid about the limits.
+**Honest framing:** these models are decision *support*, not decision makers. The clearest finding is a simple one (an uncaged listing photo, within a demographic group), the model's accuracy is modest (AUC ≈ 0.72), and every prediction is observational, not causal. The Results page is candid about the limits.

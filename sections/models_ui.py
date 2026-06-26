@@ -61,7 +61,7 @@ def _show_result(p: float, stratum: str | None = None, model: str = "data_image"
                    "(it's less calibrated than the photo+data model — see Results). "
                    "Read it as 'what the picture suggests', not a reliable adoption rate.")
     if stratum:
-        st.caption(f"Demographic group: **{stratum}** — effects like the photo lever are "
+        st.caption(f"Demographic group: **{stratum}** — effects like the caged-photo result are "
                    "measured within a group, so we compare like with like.")
     st.caption("Observational, not causal. Use to triage, not to decide.")
 
