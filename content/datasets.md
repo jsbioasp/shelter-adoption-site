@@ -5,13 +5,19 @@
 ### PetFinder (Malaysia)
 ~8,000 dogs with **photos, descriptions, and resolved adoption outcomes**. Where we *train* the photo model — it has everything a supervised model needs. *What predicts adoption when you can see the listing?*
 
+Source: [PetFinder.my Adoption Prediction on Kaggle](https://www.kaggle.com/competitions/petfinder-adoption-prediction)
+
 @austin
 ### Austin Animal Center (USA)
 ~40,000 dog records with **resolved outcomes but no photos or descriptions** — demographics only. A *second* training set: pooling it with PetFinder teaches the model demographic patterns that **aren't specific to one country**. *What about adoption generalizes across shelters?*
 
+Source: [Austin Animal Center Outcomes — City of Austin open data](https://data.austintexas.gov/Health-and-Community-Services/Austin-Animal-Center-Outcomes-10-01-2013-to-05-05-/9t4d-g238)
+
 @taiwan
 ### Taiwan MOA shelters
 Thousands of currently-adoptable dogs from Taiwan's public open-data feed — **live, but no outcome labels**. Where we *deploy and test transfer*. *Does what we learned travel to Taiwan?*
+
+Source: [Taiwan Ministry of Agriculture open data](https://data.gov.tw/en/datasets/85903)
 
 @challenges_intro
 Each of the three is suited to a different job, and each has real flaws — a different one in each case. Knowing those strengths and limits is what keeps the results below honest.
