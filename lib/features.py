@@ -82,7 +82,16 @@ def stratum_key(shared6: np.ndarray) -> str:
 
 
 def stratum_label(shared6: np.ndarray) -> str:
-    """Plain-English name for the stratum, e.g. 'young, mixed-breed'."""
+    """Plain-English / 白話 name for the stratum, e.g. 'young, mixed-breed'."""
+    try:
+        import streamlit as st
+        lang = st.session_state.get("lang", "en")
+    except Exception:
+        lang = "en"
+    if lang == "zh":
+        young = "幼年" if int(shared6[1]) else "成年"
+        breed = "米克斯" if int(shared6[2]) else "純種"
+        return f"{young}、{breed}"
     young = "young" if int(shared6[1]) else "adult"
     breed = "mixed-breed" if int(shared6[2]) else "purebred"
     return f"{young}, {breed}"
