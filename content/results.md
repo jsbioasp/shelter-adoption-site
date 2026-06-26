@@ -26,10 +26,10 @@ A score is only useful if it means what it says. **Calibration** asks: of the do
 Expected Calibration Error (ECE) = **{ece:.3f}** — the average gap between predicted and actual is about **5 points**. The photo-only view is looser still (ECE {image_ece:.3f}), which is why the site treats it as a diagnostic, not a probability.
 
 @thresholds_intro
-Because the photo+data model is calibrated, you can **act only on dogs it's sure about**: predict above a threshold T (likely adopted) or below 1−T (likely not). Higher T covers fewer dogs but is more accurate on the ones you keep.
+Because the model is calibrated, you could in principle act only on the dogs it's most sure about: take predictions above a threshold T (likely adopted) or below 1−T (likely not). Higher T covers fewer dogs but is more accurate on the ones you keep.
 
 @thresholds_caption
-This is how a shelter actually uses confidence: triage aggressively on the high-confidence dogs, give the uncertain ones a human look.
+In a real deployment, this is how confidence would be used: focus on the high-confidence dogs, and give the uncertain ones a human look. For this experimental tool it's an illustration, not a recommendation.
 
 @why_multitask
 **Why a *multi-task* model?** The simplest way to combine a photo with the demographic facts — gluing all the numbers together — made the model badly overconfident: it claimed 90% sure on dogs that actually adopted ~70% of the time. The multi-task model we deploy keeps the photo and the facts in their own lanes, so its confidence stays honest (ECE ≈ {ece:.2f}). A score you can trust matters as much as a sharp one — that's why we chose it.

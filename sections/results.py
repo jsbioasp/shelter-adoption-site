@@ -93,7 +93,7 @@ def _render_calibration(c):
     st.caption(c["calibration_caption"].format(
         ece=di["ece"], image_ece=models_cal["image_only"]["ece"]))
 
-    st.markdown("## Confidence thresholds — a real policy choice")
+    st.markdown("## Confidence thresholds — how you'd use a calibrated score")
     st.markdown(c["thresholds_intro"])
     trows = []
     for t in di["thresholds"]:
