@@ -6,7 +6,9 @@ nav wires it in here. Streamlit Community Cloud auto-redeploys on merge to main.
 """
 import streamlit as st
 
-from sections import motivation, datasets, results, models_ui, discover
+from sections import (
+    motivation, datasets, models_used, results, models_ui, discover, next_steps, disclaimer,
+)
 
 st.set_page_config(
     page_title="Shelter Adoption ML",
@@ -17,9 +19,12 @@ st.set_page_config(
 PAGES = [
     st.Page(motivation.render, title="Introduction and Motivations", url_path="motivation", default=True),
     st.Page(datasets.render, title="Datasets & Experiments", url_path="datasets"),
+    st.Page(models_used.render, title="Models Used", url_path="models-used"),
     st.Page(results.render, title="Results", url_path="results"),
     st.Page(models_ui.render, title="Try the Models", url_path="models"),
     st.Page(discover.render, title="Discover Dogs", url_path="discover"),
+    st.Page(next_steps.render, title="Next Steps", url_path="next-steps"),
+    st.Page(disclaimer.render, title="Disclaimer", url_path="disclaimer"),
 ]
 
 selected = st.navigation(PAGES)
