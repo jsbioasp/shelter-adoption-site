@@ -181,20 +181,20 @@ def _seed_probs_multitask(ens: dict, X_img: np.ndarray, X_tab: np.ndarray) -> np
 def confidence_from_prob(p: float, model: str = "data_image") -> dict:
     """Map a calibrated probability to a confidence read.
 
-    Returns {label, emoji, conf (max(p,1-p)), accuracy_pct} where accuracy_pct is
+    Returns {label, conf (max(p,1-p)), accuracy_pct} where accuracy_pct is
     the model's measured accuracy among dogs at least this confident (from the
     threshold table). Falls back to label-only if calibration data is missing.
     """
     from lib import data
     conf = max(p, 1.0 - p)
     if conf >= 0.8:
-        label, emoji = "High", "🟢"
+        label = "High"
     elif conf >= 0.7:
-        label, emoji = "Good", "🟢"
+        label = "Good"
     elif conf >= 0.6:
-        label, emoji = "Moderate", "🟡"
+        label = "Moderate"
     else:
-        label, emoji = "Low", "🔴"
+        label = "Low"
 
     accuracy_pct = None
     cal = data.load_calibration().get("models", {}).get(model, {})
@@ -203,7 +203,7 @@ def confidence_from_prob(p: float, model: str = "data_image") -> dict:
         if conf >= row["threshold"] and row.get("accuracy_pct") is not None:
             accuracy_pct = row["accuracy_pct"]
             break
-    return {"label": label, "emoji": emoji, "conf": conf, "accuracy_pct": accuracy_pct}
+    return {"label": label, "conf": conf, "accuracy_pct": accuracy_pct}
 
 
 def score_data_only(shared6: np.ndarray) -> float:

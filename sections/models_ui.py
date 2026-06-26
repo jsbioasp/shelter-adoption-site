@@ -31,14 +31,17 @@ def _confidence(p: float) -> tuple[str, str]:
     so the tiers read as faster / around / slower than a typical dog.
     """
     if p >= 0.60:
-        return "🟢 Faster than average", (f"Scores {p:.0%} — above the 50% average, so this dog "
-                                          "looks likely to be adopted faster than a typical dog.")
+        return "Faster than average", (
+            f"Scores {p:.0%} — above the 50% average, so this dog looks likely "
+            "to be adopted faster than a typical dog.")
     if p >= 0.40:
-        return "🟡 About average", (f"Scores {p:.0%} — near the 50% average pace. A better photo "
-                                    "or a featured listing can still nudge it up.")
-    return "🔴 Slower than average", (f"Scores {p:.0%} — below the 50% average, so this dog likely "
-                                      "adopts slower than typical. It benefits most from a better "
-                                      "photo, a featured listing, or an early foster.")
+        return "About average", (
+            f"Scores {p:.0%} — near the 50% average pace. A better photo or a "
+            "featured listing can still nudge it up.")
+    return "Slower than average", (
+        f"Scores {p:.0%} — below the 50% average, so this dog likely adopts "
+        "slower than typical. It benefits most from a better photo, a featured "
+        "listing, or an early foster.")
 
 
 def _show_result(p: float, stratum: str | None = None, model: str = "data_image",
@@ -57,7 +60,7 @@ def _show_result(p: float, stratum: str | None = None, model: str = "data_image"
                    "(see Results). Pace ≠ confidence: a confident *slow* score is still "
                    "a slow score.")
     else:
-        st.caption("⚠️ Photo-only is a **diagnostic**, not a calibrated probability "
+        st.caption("Photo-only is a **diagnostic**, not a calibrated probability "
                    "(it's less calibrated than the photo+data model — see Results). "
                    "Read it as 'what the picture suggests', not a reliable adoption rate.")
     if stratum:
@@ -105,8 +108,8 @@ def _reshoot_pool():
 
 def _reshoot_pace(p: float) -> str:
     if p >= 0.60:
-        return "🟢 faster"
-    return "🟡 average" if p >= 0.40 else "🔴 slower"
+        return "faster"
+    return "average" if p >= 0.40 else "slower"
 
 
 def _reshoot_tab(c):
@@ -157,7 +160,7 @@ def _reshoot_tab(c):
     for i, (_, r) in enumerate(hits.iterrows()):
         with cols[i % 3]:
             st.image(str(_EXEMPLARS_DIR / f"{r['PetID']}.jpg"), width=240)
-            badge = "✅ adopted ≤30d" if r["adopted_30d"] else "○ slower adopt"
+            badge = "adopted ≤30d" if r["adopted_30d"] else "slower adopt"
             match = "exact profile" if r["mismatch"] == 0 else f"{int(r['mismatch'])} trait(s) differ"
             st.caption(f"photo-quality **{r['quality']:.2f}** · pace {_reshoot_pace(r['byu'])} "
                        f"({r['byu']:.0%}) · {badge} · {match}")
@@ -173,7 +176,7 @@ def render():
     glossary.render(st, "auc", "mlp", "cnn", "multitask", "strata")
 
     tab_data, tab_image, tab_both, tab_reshoot = st.tabs(
-        ["📋 Data only", "📷 Image only", "📋📷 Data + image", "📸 Re-shoot (experimental)"]
+        ["Data only", "Image only", "Data + image", "Re-shoot (experimental)"]
     )
 
     # ---------------- Data only ----------------

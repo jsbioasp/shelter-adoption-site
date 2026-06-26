@@ -111,15 +111,18 @@ def _details_dialog(row, scores, n_test):
     tel = _clean(row["shelter_tel"])
     shelter_name = _clean(row["shelter_name"])
     st.markdown(f"**{shelter_name}**")
+    contact = []
     if addr != "—":
         maps = "https://www.google.com/maps/search/?api=1&query=" + urllib.parse.quote(addr)
-        st.markdown(f"📍 {addr} — [open in Maps]({maps})")
+        contact.append(f"- {addr} — [open in Maps]({maps})")
     if tel != "—":
-        st.markdown(f"📞 [{tel}](tel:{tel.replace(' ', '')})")
+        contact.append(f"- [{tel}](tel:{tel.replace(' ', '')})")
     if shelter_name != "—":
         search = "https://www.google.com/search?q=" + urllib.parse.quote(shelter_name)
-        st.markdown(f"🔎 [Find this shelter online]({search}) — for its website, "
-                    "contact form, or email")
+        contact.append(f"- [Find this shelter online]({search}) — for its website, "
+                       "contact form, or email")
+    if contact:
+        st.markdown("\n".join(contact))
     st.caption(content.load("discover")["contact_caption"])
     st.info(f"When you contact the shelter, mention **animal ID {_clean(row['animal_id'])}**.")
 
@@ -134,7 +137,7 @@ def _card(row, n_test):
     with c2:
         st.markdown(f"**{_clean(row['breed'])}** · {_clean(row['sex'])} · "
                     f"{_clean(row['age_class']).title()}")
-        st.markdown(f"📍 {_clean(row['shelter_name'])} ({_clean(row['area'])})")
+        st.markdown(f"{_clean(row['shelter_name'])} ({_clean(row['area'])})")
         if scores["ok"]:
             p_both = scores["data_image"][0]
             conf, acc = _conf_and_acc(p_both)
@@ -145,10 +148,10 @@ def _card(row, n_test):
                         text=f"Photo only: {scores['image_only'][0]:.0%} · "
                              "diagnostic (uncalibrated)")
         else:
-            st.caption("📷 Photo unavailable — showing the demographics-only score below.")
+            st.caption("Photo unavailable — showing the demographics-only score below.")
         st.progress(min(max(scores["data_only"], 0.0), 1.0),
                     text=f"Data only: {scores['data_only']:.0%} · demographics baseline")
-        if st.button("🔍 Details & contact", key=f"details_{row['animal_id']}"):
+        if st.button("Details & contact", key=f"details_{row['animal_id']}"):
             _details_dialog(row, scores, n_test)
 
 
@@ -226,7 +229,7 @@ def render():
                                 "Filters every dog.")
         sort_label = st.selectbox("Sort by", list(SORTS.keys()))
         n_show = st.slider("How many to show", 3, 24, 10, step=1)
-        shuffled = st.button("🎲 Shuffle", use_container_width=True)
+        shuffled = st.button("Shuffle", use_container_width=True)
 
     view = _filter(df, shelter, sex, breed, age, ster, body, lo / 100, hi / 100)
     sort = SORTS[sort_label]

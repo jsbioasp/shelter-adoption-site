@@ -9,7 +9,7 @@ from lib import content
 
 def render():
     c = content.load("motivation")
-    st.title("🐕 Shelter Adoption ML")
+    st.title("Shelter Adoption ML")
     st.markdown(c["tagline"])
 
     st.markdown("## Why this matters")

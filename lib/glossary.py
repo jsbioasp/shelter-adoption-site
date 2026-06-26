@@ -36,7 +36,7 @@ TERMS = {
 }
 
 
-def render(st, *keys, label="📖 Plain-English glossary"):
+def render(st, *keys, label="Plain-English glossary"):
     """Render the requested terms (in the order given) inline at the top of a page.
 
     Shown directly on the page, not tucked behind a click — define the jargon

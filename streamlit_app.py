@@ -10,17 +10,16 @@ from sections import motivation, datasets, results, models_ui, discover
 
 st.set_page_config(
     page_title="Shelter Adoption ML",
-    page_icon="🐕",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 PAGES = [
-    st.Page(motivation.render, title="Motivation", icon="🎯", url_path="motivation", default=True),
-    st.Page(datasets.render, title="Datasets & Experiments", icon="📊", url_path="datasets"),
-    st.Page(results.render, title="Results", icon="🏆", url_path="results"),
-    st.Page(models_ui.render, title="Try the Models", icon="🔮", url_path="models"),
-    st.Page(discover.render, title="Discover Dogs", icon="🔍", url_path="discover"),
+    st.Page(motivation.render, title="Motivation", url_path="motivation", default=True),
+    st.Page(datasets.render, title="Datasets & Experiments", url_path="datasets"),
+    st.Page(results.render, title="Results", url_path="results"),
+    st.Page(models_ui.render, title="Try the Models", url_path="models"),
+    st.Page(discover.render, title="Discover Dogs", url_path="discover"),
 ]
 
 selected = st.navigation(PAGES)
