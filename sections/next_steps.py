@@ -2,11 +2,12 @@
 import streamlit as st
 
 from lib import content
+from lib.i18n import t
 
 
 def render():
     c = content.load("next_steps")
-    st.title("Next Steps")
+    st.title(t("nav_next_steps"))
     st.markdown(c["intro"])
     st.markdown(c["open_source"])
     st.markdown(c["website_outreach"])
