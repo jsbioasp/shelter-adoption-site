@@ -19,7 +19,7 @@ def render():
     c = content.load("results")
     st.title("Results")
 
-    st.info(c["score_meaning"])
+    st.markdown(c["score_meaning"])
     glossary.render(st, "auc", "calibration", "ece", "cnn", "multitask", "pp")
 
     st.markdown("## The models running on this site")
@@ -106,4 +106,4 @@ def _render_calibration(c):
     st.table(pd.DataFrame(trows))
     st.caption(c["thresholds_caption"])
 
-    st.info(c["why_multitask"].format(ece=di["ece"]))
+    st.markdown(c["why_multitask"].format(ece=di["ece"]))
