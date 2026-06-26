@@ -56,6 +56,27 @@ def _cnn_dot() -> str:
     ])
 
 
+def _multitask_dot() -> str:
+    """Conceptual multi-task model: a shared backbone splitting into two heads."""
+    return "\n".join([
+        "digraph {",
+        'rankdir=LR; bgcolor="transparent"; nodesep=0.35; ranksep="0.7";',
+        'node [shape=box, style="rounded,filled", fontname="sans-serif", fontsize=10, color="#9e9e9e"];',
+        'edge [color="#bdbdbd", arrowsize=0.7];',
+        'photo [label="Dog photo", fillcolor="#E1F5FE"];',
+        'data [label="6 demographic\\nfeatures", fillcolor="#E1F5FE"];',
+        'trunk [label="Shared backbone", fillcolor="#E8F5E9"];',
+        'adopt [label="Adoption head", fillcolor="#FFF3E0"];',
+        'age [label="Age head", fillcolor="#FFF3E0"];',
+        'yadopt [label="Will it be adopted?\\n(main goal)", fillcolor="#FFE0B2"];',
+        'yage [label="Is it young?\\n(side goal)", fillcolor="#F3E5F5"];',
+        "photo -> trunk; data -> trunk;",
+        "trunk -> adopt -> yadopt;",
+        "trunk -> age -> yage;",
+        "}",
+    ])
+
+
 def render():
     c = content.load("models_used")
     st.title("Models Used")
@@ -73,3 +94,7 @@ def render():
                "many more layers.)")
 
     st.markdown(c["multitask"])
+    st.graphviz_chart(_multitask_dot())
+    st.caption("The photo and demographics share one backbone, which then splits into two heads "
+               "— one for adoption, one for age. Practicing the age question sharpens the "
+               "features the adoption head reads.")
