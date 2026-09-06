@@ -1,4 +1,11 @@
 animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,sterilized,photo_url,found_place,open_date,shelter_address,shelter_tel
+467016,嘉義市動物保護教育園區,嘉義市動物保護教育園區,臘腸犬,0,N,MEDIUM,棕色,ADULT,N,https://www.pet.gov.tw/upload/pic/1788683485609.png,林森東路269巷56之33號,,嘉義市彌陀路31號,(05)2168661
+467012,新北市中和區公立動物之家,新北市中和區公立動物之家,混種犬,1,M,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1788682004821.png,金城路三段135號,2026-09-06,新北市中和區興南路三段100號,(02)86685547
+463870,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,傑克羅素梗,0,M,MEDIUM,花色,ADULT,N,https://www.pet.gov.tw/upload/pic/1786325574544.png,漢民路,,高雄市鼓山區萬壽路350號,(07)5519059
+467003,新北市五股區公立動物之家,新北市五股區公立動物之家,長毛臘腸,0,M,MEDIUM,黃色,ADULT,F,https://www.pet.gov.tw/upload/pic/1788677761857.png,林口區下福里下福小段,,新北市五股區外寮路9-9號,(02)82925265
+467001,新北市五股區公立動物之家,新北市五股區公立動物之家,柴犬,0,F,MEDIUM,棕色,ADULT,F,https://www.pet.gov.tw/upload/pic/1788677410307.png,五股區民義路2段,,新北市五股區外寮路9-9號,(02)82925265
+467004,桃園市動物保護教育園區,桃園市動物保護教育園區,混種犬,1,M,SMALL,黃色,CHILD,F,https://www.pet.gov.tw/upload/pic/1788677758560.png,,2026-09-06,桃園市新屋區永興里3鄰藻礁路1668號,(03)4861760
+466990,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,混種犬,1,F,BIG,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1788661112654.png,左營下路,2026-09-04,高雄市鼓山區萬壽路350號,(07)5519059
 465898,新竹縣動物保護教育園區,新竹縣動物保護教育園區,混種犬,1,M,MEDIUM,黑白色,ADULT,T,https://www.pet.gov.tw/upload/pic/1787927845183.png,,2026-08-27,新竹縣竹北市縣政五街192號,(03)5519548
 466441,新竹縣動物保護教育園區,新竹縣動物保護教育園區,混種犬,1,M,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1788274896607.png,,2026-09-01,新竹縣竹北市縣政五街192號,(03)5519548
 466511,新竹縣動物保護教育園區,新竹縣動物保護教育園區,混種犬,1,M,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1788275146767.png,,2026-09-01,新竹縣竹北市縣政五街192號,(03)5519548
@@ -182,7 +189,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 462590,苗栗縣動物保護教育園區,苗栗縣動物保護教育園區,混種犬,1,M,BIG,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1785304160447.png,後龍鎮中和里,2026-07-29,苗栗縣銅鑼鄉朝陽村6鄰朝北55-1號(地圖：https:／／goo.gl/maps/Bd4sckpEPsrof7Qb8),(037)558228
 461391,苗栗縣動物保護教育園區,苗栗縣動物保護教育園區,混種犬,1,M,BIG,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1784603096700.png,公館鄉尖山村,2026-07-21,苗栗縣銅鑼鄉朝陽村6鄰朝北55-1號(地圖：https:／／goo.gl/maps/Bd4sckpEPsrof7Qb8),(037)558228
 464807,桃園市動物保護教育園區,桃園市動物保護教育園區,混種犬,1,F,MEDIUM,白色,ADULT,N,https://www.pet.gov.tw/upload/pic/1786952140102.png,中正路,2026-09-01,桃園市新屋區永興里3鄰藻礁路1668號,(03)4861760
-464276,桃園市動物保護教育園區,桃園市動物保護教育園區,混種犬,1,M,SMALL,黑色,CHILD,N,https://www.pet.gov.tw/upload/pic/1786511375905.png,高榮里高上路一段,2026-08-29,桃園市新屋區永興里3鄰藻礁路1668號,(03)4861760
 465355,南投縣公立動物收容所,南投縣公立動物收容所,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1787274174073.png,八卦路,2026-08-31,南投縣南投市嶺興路36-1號,(049)2225440
 466267,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1788159807777.png,,,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
 466335,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,M,MEDIUM,黑色,ADULT,N,https://www.pet.gov.tw/upload/pic/1788221176951.png,,2026-09-07,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
@@ -1087,7 +1093,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 463446,苗栗縣動物保護教育園區,苗栗縣動物保護教育園區,混種犬,1,M,BIG,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1785910088597.png,通霄鎮城南里,2026-08-10,苗栗縣銅鑼鄉朝陽村6鄰朝北55-1號(地圖：https:／／goo.gl/maps/Bd4sckpEPsrof7Qb8),(037)558228
 463790,宜蘭縣流浪動物中途之家,宜蘭縣流浪動物中途之家,混種犬,1,M,MEDIUM,黃色,ADULT,N,https://www.pet.gov.tw/upload/pic/1786327408698.png,八甲路,2026-08-07,宜蘭縣五結鄉成興村利寶路60號,(03)9602350620
 463788,宜蘭縣流浪動物中途之家,宜蘭縣流浪動物中途之家,混種犬,1,M,BIG,黃色,ADULT,N,https://www.pet.gov.tw/upload/pic/1786326820902.png,八甲路,2026-08-07,宜蘭縣五結鄉成興村利寶路60號,(03)9602350620
-463870,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,傑克羅素梗,0,M,MEDIUM,花色,ADULT,N,https://www.pet.gov.tw/upload/pic/1786325574544.png,漢民路,,高雄市鼓山區萬壽路350號,(07)5519059
 436511,花蓮縣狗貓躍動園區,花蓮縣狗貓躍動園區,混種犬,1,F,MEDIUM,黑棕色,ADULT,T,https://www.pet.gov.tw/upload/pic/1766721603641.png,,2026-01-23,花蓮縣鳳林鎮林榮里永豐路255號,(03)8421452
 463805,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,M,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1786161524163.png,煥昌76號,2026-08-08,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
 323432,臺北市動物之家,臺北市動物之家,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1693471011948.png,新光里忠孝東路七段,2023-12-09,臺北市內湖區安美街191號,(02)87913254
@@ -2200,7 +2205,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 426948,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,SMALL,虎斑色,CHILD,T,https://www.pet.gov.tw/upload/pic/1761121471564.png,,2025-11-07,澎湖縣馬公市烏崁里260、261號,(06)9213559
 424663,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,MEDIUM,黑色,CHILD,T,https://www.pet.gov.tw/upload/pic/1759365063615.png,文山路225巷,2025-10-17,澎湖縣馬公市烏崁里260、261號,(06)9213559
 198877,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,MEDIUM,虎斑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724383238946.png,西衛開心農場旁,2021-03-24,澎湖縣馬公市烏崁里260、261號,(06)9213559
-456441,桃園市動物保護教育園區,桃園市動物保護教育園區,哈士奇(西伯利亞雪橇犬),0,M,BIG,黑白色,ADULT,F,https://www.pet.gov.tw/upload/pic/1780712651487.png,中壢區崇德二路,,桃園市新屋區永興里3鄰藻礁路1668號,(03)4861760
 459273,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,吉娃娃犬,0,M,SMALL,白色,ADULT,N,https://www.pet.gov.tw/upload/pic/1782869499947.png,忠義街,,高雄市鼓山區萬壽路350號,(07)5519059
 459243,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,美國惡霸犬,0,M,BIG,棕色,ADULT,N,https://www.pet.gov.tw/upload/pic/1782867469266.png,陽明路,,高雄市鼓山區萬壽路350號,(07)5519059
 459235,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,M,MEDIUM,黑色,ADULT,N,https://www.pet.gov.tw/upload/pic/1782865064712.png,,2026-06-30,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
@@ -4126,7 +4130,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 245780,南投縣公立動物收容所,南投縣公立動物收容所,比特犬,0,F,MEDIUM,虎斑色,ADULT,T,https://www.pet.gov.tw/upload/pic/7120458f-5f2a-4706-9284-df3d84253ca8.JPG,南投縣埔里鎮雙吉路,2011-03-11,南投縣南投市嶺興路36-1號,(049)2225440
 411964,新北市板橋區公立動物之家,新北市板橋區公立動物之家,混種犬,1,M,MEDIUM,黑色,ADULT,F,https://www.pet.gov.tw/upload/pic/1750815252443.png,樹林區中山路段706號,2025-06-25,新北市板橋區板城路28-1號,(02)89662158
 410192,新北市五股區公立動物之家,新北市五股區公立動物之家,瑪爾濟斯犬,0,M,SMALL,白色,ADULT,N,https://www.pet.gov.tw/upload/pic/1750244504215.png,三重區力行路二段162巷53號,,新北市五股區外寮路9-9號,(02)82925265
-351852,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,MEDIUM,虎斑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724658179522.png,澎科大學生宿舍,2024-05-13,澎湖縣馬公市烏崁里260、261號,(06)9213559
 361532,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,MEDIUM,黑黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724655294771.png,發電廠附近,2024-06-26,澎湖縣馬公市烏崁里260、261號,(06)9213559
 291326,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1727245010659.png,,2023-01-17,澎湖縣馬公市烏崁里260、261號,(06)9213559
 297573,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1727244808783.png,文東加油站,2023-03-13,澎湖縣馬公市烏崁里260、261號,(06)9213559
