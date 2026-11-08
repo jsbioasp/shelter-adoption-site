@@ -1,4 +1,7 @@
 animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,sterilized,photo_url,found_place,open_date,shelter_address,shelter_tel
+473899,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,BIG,黑色,ADULT,F,https://www.pet.gov.tw/upload/pic/1794120878891.png,,2026-11-18,澎湖縣馬公市烏崁里260、261號,(06)9213559
+473888,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,混種犬,1,M,MEDIUM,白色,ADULT,N,https://www.pet.gov.tw/upload/pic/1794107919979.png,援中路河堤,,高雄市鼓山區萬壽路350號,(07)5519059
+460473,臺北市動物之家,臺北市動物之家,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1783905411472.png,大屯里復興三路310巷,2026-08-20,臺北市內湖區安美街191號,(02)87913254
 473195,新竹縣動物保護教育園區,新竹縣動物保護教育園區,混種犬,1,M,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1793591965224.png,,2026-11-02,新竹縣竹北市縣政五街192號,(03)5519548
 473383,新竹縣動物保護教育園區,新竹縣動物保護教育園區,混種犬,1,M,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1793715699979.png,,2026-11-03,新竹縣竹北市縣政五街192號,(03)5519548
 473880,臺南市動物之家灣裡站,臺南市動物之家灣裡站,混種犬,1,M,SMALL,白色,CHILD,N,https://www.pet.gov.tw/upload/pic/1794045606980.png,城北路871巷對面河堤外,2026-11-07,臺南市南區省躬里14鄰萬年路580巷92號,(06)2964439
@@ -7,7 +10,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 438661,南投縣公立動物收容所,南投縣公立動物收容所,混種犬,1,M,SMALL,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1768351255488.png,董門巷,2026-01-16,南投縣南投市嶺興路36-1號,(049)2225440
 330421,南投縣公立動物收容所,南投縣公立動物收容所,混種犬,1,M,MEDIUM,黃白色,ADULT,T,https://www.pet.gov.tw/upload/pic/1697767189095.png,南投縣仁愛鄉大同村仁和路,2023-10-25,南投縣南投市嶺興路36-1號,(049)2225440
 473865,臺東縣動物收容中心,臺東縣動物收容中心,混種犬,1,F,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1794032842932.png,忠義堂,,臺東縣臺東市中華路4段999巷600號,(089)362011
-473863,彰化縣流浪狗中途之家臨時收容所,彰化縣流浪狗中途之家臨時收容所,貴賓犬,0,M,BIG,棕白色,ADULT,F,https://www.pet.gov.tw/upload/pic/1794024250560.png,沿海路二段94號,,"彰化縣芳苑鄉文津段436-4地號（座標緯度及經度：23.932676, 120.367307）",(09)
 473860,彰化縣流浪狗中途之家臨時收容所,彰化縣流浪狗中途之家臨時收容所,柴犬,0,F,MEDIUM,黑黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1794022723156.png,茄苳路二段,2026-11-07,"彰化縣芳苑鄉文津段436-4地號（座標緯度及經度：23.932676, 120.367307）",(09)
 247789,臺北市動物之家,臺北市動物之家,混種犬,1,M,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/ce8e7447-351a-4882-8011-fa978c44a4a0.jpg,博嘉里	木柵路5段,2022-04-09,臺北市內湖區安美街191號,(02)87913254
 473819,臺東縣動物收容中心,臺東縣動物收容中心,混種犬,1,F,MEDIUM,黃色,ADULT,N,https://www.pet.gov.tw/upload/pic/1794016136169.png,太平路587號,2026-11-06,臺東縣臺東市中華路4段999巷600號,(089)362011
@@ -1433,7 +1435,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 161113,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,BIG,黑黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1727265176952.png,馬公國小,2020-06-02,澎湖縣馬公市烏崁里260、261號,(06)9213559
 287767,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,BIG,黑白色,ADULT,T,https://www.pet.gov.tw/upload/pic/1726728586560.png,案山里防波堤旁,2022-12-21,澎湖縣馬公市烏崁里260、261號,(06)9213559
 334942,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724385047521.png,,2023-12-01,澎湖縣馬公市烏崁里260、261號,(06)9213559
-460473,臺北市動物之家,臺北市動物之家,混種犬,1,F,MEDIUM,黑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1783905411472.png,大屯里復興三路310巷,2026-08-20,臺北市內湖區安美街191號,(02)87913254
 334941,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,M,MEDIUM,虎斑色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724385124862.png,,2023-12-01,澎湖縣馬公市烏崁里260、261號,(06)9213559
 295644,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,BIG,黑黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1724384671250.png,黑砂糖冰廠,2023-02-25,澎湖縣馬公市烏崁里260、261號,(06)9213559
 245166,澎湖縣流浪動物收容中心,澎湖縣流浪動物收容中心,混種犬,1,F,MEDIUM,黃色,ADULT,T,https://www.pet.gov.tw/upload/pic/1727265094271.png,林務局,2022-03-14,澎湖縣馬公市烏崁里260、261號,(06)9213559
@@ -2665,7 +2666,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 221615,臺北市動物之家,臺北市動物之家,混種犬,1,M,MEDIUM,黑棕色,ADULT,F,https://asms.coa.gov.tw/amlapp/upload/pic/aa64ec18-d230-4f80-8ae3-01a2b38729f1_org.jpeg,新安里新安路３０巷,2021-09-19,臺北市內湖區安美街191號,(02)87913254
 224679,臺北市動物之家,臺北市動物之家,混種犬,1,M,MEDIUM,黃白色,ADULT,T,https://www.pet.gov.tw/upload/pic/db8c89d1-6d40-44d8-ac70-48d93db03ccd.jpg,台北市動物之家,2021-09-28,臺北市內湖區安美街191號,(02)87913254
 452561,新北市新店區公立動物之家,新北市新店區公立動物之家,貴賓犬,0,M,SMALL,咖啡色,ADULT,T,https://www.pet.gov.tw/upload/pic/1778576347679.png,新店區寶高路120巷巷口,2026-05-16,新北市新店區安泰路235號,(02)22159462
-457963,高雄市壽山動物保護教育園區,高雄市壽山動物保護教育園區,混種犬,1,F,SMALL,黑色,CHILD,F,https://www.pet.gov.tw/upload/pic/1782289361803.png,介壽路,2026-06-18,高雄市鼓山區萬壽路350號,(07)5519059
 31595,臺北市動物之家,臺北市動物之家,其他,0,M,MEDIUM,黑白色,ADULT,T,https://www.pet.gov.tw/upload/pic/24230_106061807_2.jpg,民眾不擬續養,2021-04-10,臺北市內湖區安美街191號,(02)87913254
 458531,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,F,MEDIUM,白色,ADULT,N,https://www.pet.gov.tw/upload/pic/1782284328391.png,,2026-07-01,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
 458474,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,F,MEDIUM,黑色,ADULT,N,https://www.pet.gov.tw/upload/pic/1782272008609.png,,2026-07-01,臺南市善化區昌隆里東勢寮1-19號,(06)5832399
@@ -5254,7 +5254,6 @@ animal_id,shelter_name,area,breed,is_mixed_breed,sex,body_type,color,age_class,s
 333982,金門縣動物收容中心,金門縣動物收容中心,混種犬,1,M,MEDIUM,黃色,ADULT,F,https://www.pet.gov.tw/upload/pic/1699596045373.png,珠浦南路,2023-11-14,金門縣金湖鎮裕民農莊20號,(082)336625
 333791,金門縣動物收容中心,金門縣動物收容中心,混種犬,1,M,MEDIUM,白色,ADULT,F,https://www.pet.gov.tw/upload/pic/1699511852043.png,后頭,2023-11-13,金門縣金湖鎮裕民農莊20號,(082)336625
 333261,金門縣動物收容中心,金門縣動物收容中心,混種犬,1,F,SMALL,黑色,CHILD,F,https://www.pet.gov.tw/upload/pic/1699327744794.png,環島北路四段,2023-11-01,金門縣金湖鎮裕民農莊20號,(082)336625
-288829,桃園市動物保護教育園區,桃園市動物保護教育園區,混種犬,1,M,SMALL,黑色,CHILD,F,https://www.pet.gov.tw/upload/pic/1671666114488.png,石牌里００５鄰石牌嶺,2023-03-13,桃園市新屋區永興里3鄰藻礁路1668號,(03)4861760
 331925,金門縣動物收容中心,金門縣動物收容中心,混種犬,1,M,MEDIUM,黑色,ADULT,F,https://www.pet.gov.tw/upload/pic/1698565130662.png,成功,2023-11-01,金門縣金湖鎮裕民農莊20號,(082)336625
 331203,臺南市動物之家善化站,臺南市動物之家善化站,混種犬,1,M,MEDIUM,黑色,ADULT,F,https://www.pet.gov.tw/upload/pic/1698222897910.png,,2023-10-30,臺南市善化區昌隆里東勢寮1~19號,(06)5832399
 318094,金門縣動物收容中心,金門縣動物收容中心,混種犬,1,M,SMALL,米色,CHILD,T,https://www.pet.gov.tw/upload/pic/1690546965601.png,,2023-07-19,金門縣金湖鎮裕民農莊20號,(082)336625
